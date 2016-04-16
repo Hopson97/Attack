@@ -20,13 +20,12 @@ class Test : public State_Base
         update  ( const double dt ) override;
 
         void
-        glDraw  ( const double dt ) override;
-
-        void
-        sfDraw  ( const double dt ) override;
+        draw  ( const double dt ) override;
 
     protected:
         Game* mGame;
+
+        sf::Text testText;
 };
 
 }

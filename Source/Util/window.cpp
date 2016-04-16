@@ -1,7 +1,5 @@
 #include "window.h"
 
-#include <GL/glew.h>
-
 Window :: Window()
 {
     //General window stuff
@@ -10,19 +8,7 @@ Window :: Window()
                       sf::Style::Default,
                       sf::ContextSettings(24) );
 
-    m_window.setFramerateLimit ( 60 );
-
-    //GLEW set up
-    glewExperimental = GL_TRUE;
-    glewInit();
-
-    //OpenGL set up
-    glViewport  (0, 0, winInfo::WIDTH, winInfo::HEIGHT);
-    glEnable    (GL_DEPTH_TEST);
-    glEnable    (GL_CULL_FACE);
-    glCullFace  (GL_BACK);
-
-
+    m_window.setFramerateLimit ( 120 );
 }
 
 sf::RenderWindow&
@@ -32,12 +18,9 @@ Window :: get()
 }
 
 void
-Window :: clear ( RGBA colour )
+Window :: clear ( const sf::Color& colour )
 {
-    colour.check(); //Check if the RGB values are in the 0.0 <= x <= 1.0 range
-
-    glClearColor( colour.r, colour.g, colour.b, colour.a );
-    glClear ( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    m_window.clear( colour );
 }
 
 void

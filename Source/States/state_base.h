@@ -25,10 +25,7 @@ class State_Base
         update      ( const double dt ) = 0;
 
         virtual void
-        glDraw        ( const double dt ) = 0;
-
-        virtual void
-        sfDraw        ( const double dt ) = 0;
+        draw        ( const double dt ) = 0;
 
     protected:
         Game* mGame;

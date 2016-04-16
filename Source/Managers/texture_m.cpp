@@ -14,15 +14,12 @@ void
 Texture_M :: loadTileTextures()
 {
     const std::string tilePath = "Res/Textures/Tiles/";
-
-
 }
 
 void
 Texture_M :: loadEntityTextures  ()
 {
     const std::string entityPath = "Res/Textures/Entities/";
-
 }
 
 
@@ -38,7 +35,7 @@ Texture_M :: loadTexture ( const Texture_Name name, const std::string& path )
 {
     if ( !m_textureMap[ name ].loadFromFile( path ) )
     {
-        throw std::runtime_error ( "Texture file at " + path + " does not exist.");
+        throw std::runtime_error ( "Texture at " + path + " does not exist.");
     }
 
     m_textureMap[ name ].setSmooth( true );

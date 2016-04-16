@@ -6,7 +6,7 @@ namespace State
 Test :: Test  ( Game* game )
 :   State_Base ( game )
 {
-
+    testText.setFont( game->getFont(Font_Name::TestFont ) );
 }
 
 void
@@ -22,13 +22,7 @@ Test :: update ( const double dt )
 }
 
 void
-Test :: glDraw ( const double dt )
-{
-
-}
-
-void
-Test :: sfDraw( const double dt )
+Test :: draw( const double dt )
 {
 
 }

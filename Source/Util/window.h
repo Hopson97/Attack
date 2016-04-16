@@ -9,31 +9,6 @@ namespace winInfo
     constexpr int WIDTH  = 1280;
 }
 
-struct RGBA
-{
-    float   r,
-            g,
-            b,
-            a;
-    void check ()
-    {
-        checkF( r );
-        checkF( g );
-        checkF( b );
-        checkF( a );
-    }
-
-    private:
-        void checkF ( float& f )
-        {
-            if ( f < 0.0f || f > 1.0f )
-            {
-                f = 0.0f;
-            }
-        }
-
-};
-
 class Window
 {
     public:
@@ -43,7 +18,7 @@ class Window
         get();
 
         void
-        clear ( RGBA colour = { 0.0f, 0.0f, 0.0f, 1.0f } );
+        clear ( const sf::Color& colour = { 0, 0, 0 } );
 
         void
         update ();

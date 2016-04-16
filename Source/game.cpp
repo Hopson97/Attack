@@ -30,8 +30,8 @@ Game :: runLoop ()
                 accumulated_dt -= timeStep;
                 m_states.peekState()->update    ( timeStep.asMicroseconds() );
             }
-            m_states.peekState()->glDraw        ( dt );
-            m_states.peekState()->sfDraw        ( dt );
+
+            m_states.peekState()->draw        ( dt );
 
             m_window.update();
         }
