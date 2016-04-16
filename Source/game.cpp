@@ -75,6 +75,12 @@ Game :: getSound ( const Sound_Name name ) const
     return m_sounds.getSound ( name );
 }
 
+void
+Game :: playMusic   ( const Music_Name name )
+{
+    m_music.playSong( name );
+}
+
 sf::RenderWindow&
 Game :: getWindow   ()
 {

@@ -93,6 +93,8 @@
 		</Compiler>
 		<Unit filename="Source/Managers/font_m.cpp" />
 		<Unit filename="Source/Managers/font_m.h" />
+		<Unit filename="Source/Managers/music_m.cpp" />
+		<Unit filename="Source/Managers/music_m.h" />
 		<Unit filename="Source/Managers/sound_m.cpp" />
 		<Unit filename="Source/Managers/sound_m.h" />
 		<Unit filename="Source/Managers/texture_m.cpp" />

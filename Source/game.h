@@ -8,6 +8,7 @@
 #include "Managers/texture_m.h"
 #include "Managers/font_m.h"
 #include "Managers/sound_m.h"
+#include "Managers/music_m.h"
 
 class Game
 {
@@ -29,6 +30,9 @@ class Game
         const sf::SoundBuffer&
         getSound    ( const Sound_Name name ) const;
 
+        void
+        playMusic   ( const Music_Name name );
+
         sf::RenderWindow&
         getWindow   ();
 
@@ -42,6 +46,7 @@ class Game
         Manager::Font_M     m_fonts;
         Manager::Texture_M  m_textures;
         Manager::Sound_M    m_sounds;
+        Manager::Music_M    m_music;
 };
 
 #endif // GAME_H
