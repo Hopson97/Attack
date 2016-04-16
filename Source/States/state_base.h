@@ -28,7 +28,7 @@ class State_Base
         draw        ( const double dt ) = 0;
 
     protected:
-        Game* mGame;
+        Game* m_game;
 };
 
 } //Namespace state

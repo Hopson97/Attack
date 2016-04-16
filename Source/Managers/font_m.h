@@ -7,7 +7,8 @@
 
 enum class Font_Name
 {
-        TestFont
+        Instruction
+    ,   Arial
 };
 
 namespace Manager

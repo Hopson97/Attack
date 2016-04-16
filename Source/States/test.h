@@ -24,8 +24,6 @@ class Test : public State_Base
 
     protected:
         Game* mGame;
-
-        sf::Text testText;
 };
 
 }

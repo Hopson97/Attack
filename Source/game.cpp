@@ -68,3 +68,9 @@ Game :: getFont ( const Font_Name name ) const
 {
     return m_fonts.getFont( name );
 }
+
+sf::RenderWindow&
+Game :: getWindow   ()
+{
+    return m_window.get();
+}

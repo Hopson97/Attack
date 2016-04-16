@@ -25,6 +25,9 @@ class Game
         const sf::Font&
         getFont     ( const Font_Name name ) const;
 
+        sf::RenderWindow&
+        getWindow   ();
+
     private:
         Window m_window;
         State::Handler m_states;
