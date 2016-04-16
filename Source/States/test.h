@@ -2,6 +2,7 @@
 #define TEST_H
 
 #include "game.h"
+#include "level.h"
 
 namespace State
 {
@@ -22,8 +23,9 @@ class Test : public State_Base
         void
         draw  ( const double dt ) override;
 
-    protected:
-        Game* mGame;
+    private:
+        Level m_level;
+
 };
 
 }

@@ -6,7 +6,8 @@
 
 enum class Texture_Name
 {
-
+    Grass
+,   Dirt
 };
 
 namespace Manager

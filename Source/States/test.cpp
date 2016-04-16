@@ -4,7 +4,8 @@ namespace State
 {
 
 Test :: Test  ( Game* game )
-:   State_Base ( game )
+:   State_Base  ( game )
+,   m_level     ( game )
 {
 
 }
@@ -24,7 +25,7 @@ Test :: update ( const double dt )
 void
 Test :: draw( const double dt )
 {
-
+    m_level.draw( m_game->getWindow() );
 }
 
 } //Namespace State

@@ -14,6 +14,9 @@ void
 Texture_M :: loadTileTextures()
 {
     const std::string tilePath = "Res/Textures/Tiles/";
+
+    loadTexture( Texture_Name::Grass, tilePath + "Grass.png" );
+    loadTexture( Texture_Name::Dirt,  tilePath + "Dirt.png"  );
 }
 
 void

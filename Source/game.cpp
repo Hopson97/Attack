@@ -12,7 +12,7 @@ void
 Game :: runLoop ()
 {
     sf::Clock dtClock;
-    const   sf::Time timeStep = sf::microseconds(50);
+    const   sf::Time timeStep = sf::seconds( 0.01 );
             sf::Time accumulated_dt;
     dtClock.restart();
 
