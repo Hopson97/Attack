@@ -7,6 +7,7 @@
 
 #include "Managers/texture_m.h"
 #include "Managers/font_m.h"
+#include "Managers/sound_m.h"
 
 class Game
 {
@@ -25,6 +26,9 @@ class Game
         const sf::Font&
         getFont     ( const Font_Name name ) const;
 
+        const sf::SoundBuffer&
+        getSound    ( const Sound_Name name ) const;
+
         sf::RenderWindow&
         getWindow   ();
 
@@ -37,9 +41,7 @@ class Game
 
         Manager::Font_M     m_fonts;
         Manager::Texture_M  m_textures;
-
-
-
+        Manager::Sound_M    m_sounds;
 };
 
 #endif // GAME_H

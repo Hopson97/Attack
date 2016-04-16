@@ -69,6 +69,12 @@ Game :: getFont ( const Font_Name name ) const
     return m_fonts.getFont( name );
 }
 
+const sf::SoundBuffer&
+Game :: getSound ( const Sound_Name name ) const
+{
+    return m_sounds.getSound ( name );
+}
+
 sf::RenderWindow&
 Game :: getWindow   ()
 {

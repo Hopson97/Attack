@@ -21,6 +21,7 @@
 					<Add directory="Source/States" />
 					<Add directory="Source/Util" />
 					<Add directory="Source/Entities" />
+					<Add directory="Source/Managers" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32s" />
@@ -60,6 +61,7 @@
 					<Add directory="Source/States" />
 					<Add directory="Source/Util" />
 					<Add directory="Source/Entities" />
+					<Add directory="Source/Managers" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -89,26 +91,20 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Shaders/frag.frag" />
-		<Unit filename="Shaders/vert.vert" />
-		<Unit filename="Source/Entities/entity.cpp" />
-		<Unit filename="Source/Entities/entity.h" />
-		<Unit filename="Source/Shaders/shader.cpp" />
-		<Unit filename="Source/Shaders/shader.h" />
+		<Unit filename="Source/Managers/font_m.cpp" />
+		<Unit filename="Source/Managers/font_m.h" />
+		<Unit filename="Source/Managers/sound_m.cpp" />
+		<Unit filename="Source/Managers/sound_m.h" />
+		<Unit filename="Source/Managers/texture_m.cpp" />
+		<Unit filename="Source/Managers/texture_m.h" />
 		<Unit filename="Source/States/handler.cpp" />
 		<Unit filename="Source/States/handler.h" />
 		<Unit filename="Source/States/state_base.cpp" />
 		<Unit filename="Source/States/state_base.h" />
 		<Unit filename="Source/States/test.cpp" />
 		<Unit filename="Source/States/test.h" />
-		<Unit filename="Source/Util/basics.hpp" />
-		<Unit filename="Source/Util/mouse_controller.cpp" />
-		<Unit filename="Source/Util/mouse_controller.h" />
-		<Unit filename="Source/Util/opengl_funcs.cpp" />
-		<Unit filename="Source/Util/opengl_funcs.h" />
 		<Unit filename="Source/Util/rand.cpp" />
 		<Unit filename="Source/Util/rand.h" />
-		<Unit filename="Source/Util/rangenum.h" />
 		<Unit filename="Source/Util/window.cpp" />
 		<Unit filename="Source/Util/window.h" />
 		<Unit filename="Source/game.cpp" />

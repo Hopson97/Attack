@@ -11,9 +11,7 @@ Font_M :: Font_M()
     loadFonts();
 }
 
-//========================================================================================
-//  Loads a font and adds it into the std::map
-//========================================================================================
+//Loads up all the fonts.
 void
 Font_M :: loadFonts ()
 {
@@ -23,9 +21,8 @@ Font_M :: loadFonts ()
     loadFont( Font_Name::Arial,         FontPath + "arial.ttf" );
 }
 
-//========================================================================================
-//  Loads a font and adds it into the std::map
-//========================================================================================
+
+// Loads a font and adds it into the std::map.
 void
 Font_M :: loadFont ( const Font_Name name, const std::string& path )
 {
@@ -37,9 +34,7 @@ Font_M :: loadFont ( const Font_Name name, const std::string& path )
     std::cout << "Font loaded at " + path << std::endl;
 }
 
-//========================================================================================
-//  Returns a const font based on the font name passed in
-//========================================================================================
+// Returns a const font based on the font name passed in.
 const sf::Font&
 Font_M :: getFont ( const Font_Name name ) const
 {
