@@ -1,0 +1,66 @@
+#ifndef WINDOW_H
+#define WINDOW_H
+
+#include <SFML/Graphics.hpp>
+
+namespace winInfo
+{
+    constexpr int HEIGHT = 700;
+    constexpr int WIDTH  = 1280;
+}
+
+struct RGBA
+{
+    float   r,
+            g,
+            b,
+            a;
+    void check ()
+    {
+        checkF( r );
+        checkF( g );
+        checkF( b );
+        checkF( a );
+    }
+
+    private:
+        void checkF ( float& f )
+        {
+            if ( f < 0.0f || f > 1.0f )
+            {
+                f = 0.0f;
+            }
+        }
+
+};
+
+class Window
+{
+    public:
+        Window();
+
+        sf::RenderWindow&
+        get();
+
+        void
+        clear ( RGBA colour = { 0.0f, 0.0f, 0.0f, 1.0f } );
+
+        void
+        update ();
+
+        const bool
+        isOpen ();
+
+        void
+        close ();
+
+    private:
+        void
+        winEvents ();
+
+
+    private:
+        sf::RenderWindow m_window;
+};
+
+#endif // WINDOW_H
