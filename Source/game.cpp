@@ -50,3 +50,21 @@ Game :: calculateDeltaTime ( sf::Clock& c, sf::Time& t )
     t += dt;
     return t.asSeconds();
 }
+
+State::Handler&
+Game :: getStates ()
+{
+    return m_states;
+}
+
+const sf::Texture&
+Game :: getTexture ( const Texture_Name name ) const
+{
+    return m_textures.getTexture( name );
+}
+
+const sf::Font&
+Game :: getFont ( const Font_Name name ) const
+{
+    return m_fonts.getFont( name );
+}

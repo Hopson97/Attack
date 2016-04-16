@@ -4,7 +4,7 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 
-enum class Texture_Names
+enum class Texture_Name
 {
 
 };
