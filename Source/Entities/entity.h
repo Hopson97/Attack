@@ -49,7 +49,7 @@ class Entity
         resetXVelocity      ();
 
         void
-        resetYVelcoity      ();
+        resetYVelocity      ();
 
         const bool
         isOnGround          () const;

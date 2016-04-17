@@ -47,7 +47,7 @@ Effected_By_Gravity :: applyGravity    ()
 
         if ( tileSolid( m_level, newPos ) || tileSolid ( m_level, { newPosRight, newPos.y } ) )
         {
-            m_entity.resetYVelcoity();
+            m_entity.resetYVelocity();
             m_entity.setIfOnGround( true );
         }
     }

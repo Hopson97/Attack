@@ -31,6 +31,15 @@ Tile_Collidable :: checkXTile ( const sf::Vector2f& newPos )
 }
 
 void
+Tile_Collidable :: checkYTile ( const sf::Vector2f& newPos )
+{
+    if ( tileSolid ( m_level, newPos ) )
+    {
+        m_entity.resetYVelocity();
+    }
+}
+
+void
 Tile_Collidable :: checkLeftCollide    ()
 {
     sf::Vector2f newPos = getNextPosition ( m_entity );
@@ -69,10 +78,11 @@ Tile_Collidable :: checkUpCollide      ()
 
     if ( m_entity.getVelocity().y < 0 )
     {
-        if ( tileSolid( m_level, newPos ) )
-        {
-            m_entity.resetYVelcoity();
-        }
+        checkYTile( newPos );
+
+        newPos.x += m_entity.getSpriteSize().x - 1;
+
+        checkYTile( newPos );
     }
 }
 

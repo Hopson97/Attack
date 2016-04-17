@@ -96,7 +96,7 @@ Entity :: resetXVelocity ()
 }
 
 void
-Entity :: resetYVelcoity ()
+Entity :: resetYVelocity ()
 {
     m_velocity.y = 0;
 }

@@ -30,6 +30,9 @@ class Tile_Collidable : public Component_Base
         void
         checkXTile          ( const sf::Vector2f& newPos );
 
+        void
+        checkYTile          ( const sf::Vector2f& newPos );
+
     private:
         Entity&         m_entity;
         const Level&    m_level;
