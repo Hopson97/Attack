@@ -1,5 +1,7 @@
 #include "window.h"
 
+#include <SFML/OpenGL.hpp>
+
 Window :: Window()
 {
     //General window stuff

@@ -3,6 +3,7 @@
 
 #include "game.h"
 #include "level.h"
+#include "player.h"
 
 namespace State
 {
@@ -24,7 +25,10 @@ class Test : public State_Base
         draw  ( const double dt ) override;
 
     private:
-        Level m_level;
+        Level       m_level;
+        Player      m_player;
+
+        sf::View    m_camera;
 
 };
 

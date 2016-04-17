@@ -8,20 +8,26 @@
 class Player
 {
     public:
-        Player( const Level* level );
+        Player  ( const Level* level );
 
         void
-        input ();
+        input   ( const float dt );
 
         void
-        update ( const float dt );
+        update  ( const float dt );
 
         void
-        draw ( const sf::RenderWindow& window );
+        draw    ( sf::RenderWindow& window );
+
+        const sf::Vector2f
+        getPixelPosition () const;
 
     private:
         void
-        updateTilePosition;
+        updateTilePosition ();
+
+        void
+        tileCollideCheck    ();
 
     private:
         sf::RectangleShape  m_sprite;
@@ -29,6 +35,8 @@ class Player
         sf::Vector2i        m_tilePostion;
 
         const Level*        m_level;
+
+        sf::Vector2f        m_velocity;
 };
 
 #endif // PLAYER_H

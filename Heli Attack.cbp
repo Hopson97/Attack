@@ -23,6 +23,7 @@
 					<Add directory="Source/Entities" />
 					<Add directory="Source/Managers" />
 					<Add directory="Source/Tiles" />
+					<Add directory="Source/Tiles/Util" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32s" />
@@ -64,6 +65,7 @@
 					<Add directory="Source/Entities" />
 					<Add directory="Source/Managers" />
 					<Add directory="Source/Tiles" />
+					<Add directory="Source/Tiles/Util" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -93,6 +95,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Source/Entities/player.cpp" />
+		<Unit filename="Source/Entities/player.h" />
 		<Unit filename="Source/Managers/font_m.cpp" />
 		<Unit filename="Source/Managers/font_m.h" />
 		<Unit filename="Source/Managers/music_m.cpp" />
@@ -107,8 +111,16 @@
 		<Unit filename="Source/States/state_base.h" />
 		<Unit filename="Source/States/test.cpp" />
 		<Unit filename="Source/States/test.h" />
+		<Unit filename="Source/Tiles/Util/tile_info.h" />
+		<Unit filename="Source/Tiles/Util/tile_model.cpp" />
+		<Unit filename="Source/Tiles/Util/tile_model.h" />
+		<Unit filename="Source/Tiles/air.cpp" />
+		<Unit filename="Source/Tiles/air.h" />
+		<Unit filename="Source/Tiles/dirt.cpp" />
+		<Unit filename="Source/Tiles/dirt.h" />
 		<Unit filename="Source/Tiles/grass.cpp" />
 		<Unit filename="Source/Tiles/grass.h" />
+		<Unit filename="Source/Tiles/tile.cpp" />
 		<Unit filename="Source/Tiles/tile.h" />
 		<Unit filename="Source/Util/rand.cpp" />
 		<Unit filename="Source/Util/rand.h" />
@@ -119,6 +131,8 @@
 		<Unit filename="Source/level.cpp" />
 		<Unit filename="Source/level.h" />
 		<Unit filename="Source/main.cpp" />
+		<Unit filename="Source/map_loader.cpp" />
+		<Unit filename="Source/map_loader.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
