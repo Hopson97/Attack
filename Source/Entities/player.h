@@ -3,37 +3,20 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "entity.h"
 #include "level.h"
 
-class Player
+class Player : public Entity
 {
     public:
-        Player  ( const Level* level );
+        Player  ( const Level& level );
 
         void
         input   ( const float dt );
 
-        void
-        update  ( const float dt );
-
-        void
-        draw    ( sf::RenderWindow& window );
-
-        const sf::Vector2f
-        getPixelPosition () const;
-
     private:
         void
-        updateTilePosition ();
-
-        void
-        checkLeftCollide    ();
-
-        void
-        checkRightCollide   ();
-
-        void
-        checkUpCollide      ();
+        uniqueUpdate  ( const float dt ) override;
 
         void
         checkGravity        ();
@@ -45,21 +28,15 @@ class Player
         tileSolid           ( const sf::Vector2f& newPos  ) const;
 
     private:
-        sf::RectangleShape  m_sprite;
-
-        sf::Vector2i        m_tilePostion;
-
-        const Level*        m_level;
-
-        sf::Vector2f        m_velocity;
-
         bool m_isOnGround = false;
 
-        constexpr static double m_walkSpeed    = 70;
+        constexpr static double m_walkSpeed    = 100;
 
-        constexpr static double m_jumpSpeed    = 1000;
+        constexpr static double m_jumpSpeed    = 500;
 
-        constexpr static double m_gravity      = 0.2;
+        const Level& m_level;
+
+
 };
 
 #endif // PLAYER_H

@@ -1,6 +1,7 @@
 #include "level.h"
 
 #include "map_loader.h"
+#include "tile_info.h"
 
 #include <iostream>
 
@@ -14,6 +15,8 @@ Level :: Level( const Game* game )
     Map_Loader loader;
 
     loader.loadMap( this, "Res/Maps/test.helimap", m_models );
+
+    std::cout << m_tiles.size() << std::endl;
 }
 
 void
@@ -26,12 +29,39 @@ Level :: update  ( const float dt )
 }
 
 void
-Level :: draw    ( sf::RenderWindow& window )
+Level :: draw    ( sf::RenderWindow& window, const sf::Vector2i& playerPos )
 {
-    for ( auto& tile : m_tiles )
+    int xStart, yStart, xEnd, yEnd;
+    getScreenBounds( xStart, yStart, xEnd, yEnd, playerPos );
+
+    for ( int y = yStart ; y < yEnd ; y++ )
     {
-        tile->draw( window );
+        for ( int x = xStart ; x < xEnd ; x++ )
+        {
+            getTileAt( x, y )->draw ( window );
+        }
     }
+}
+
+void
+Level :: getScreenBounds(  int& xStart, int& yStart,
+                           int& xEnd,   int& yEnd,
+                           const sf::Vector2i& playerTilePos ) const
+{
+    constexpr static int tilesX = (winInfo::WIDTH / Tile::TILE_SIZE );
+    constexpr static int tilesY = (winInfo::WIDTH / Tile::TILE_SIZE );
+
+    xStart = playerTilePos.x - tilesX;
+    yStart = playerTilePos.y - tilesY;
+
+    if ( xStart < 0 ) xStart = 0;
+    if ( yStart < 0 ) yStart = 0;
+
+    xEnd = playerTilePos.x + tilesX;
+    yEnd = playerTilePos.y + tilesY;
+
+    if ( xEnd > m_mapWidth  - 1 ) xEnd = m_mapWidth;
+    if ( yEnd > m_mapHeight - 1 ) yEnd = m_mapHeight;
 }
 
 const TilePtr&

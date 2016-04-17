@@ -27,13 +27,18 @@ class Level
         update  ( const float dt );
 
         void
-        draw    ( sf::RenderWindow& window );
+        draw    ( sf::RenderWindow& window, const sf::Vector2i& playerPos );
 
         const TilePtr&
         getTileAt ( const int x, const int y ) const;
 
         const TilePtr&
         getTileAt ( const sf::Vector2i& tilePosition ) const;
+
+        void
+        getScreenBounds(  int& xStart, int& yStart,
+                          int& xEnd,   int& yEnd,
+                          const sf::Vector2i& playerTilePos ) const;
 
     private:
         std::vector<TilePtr> m_tiles;
