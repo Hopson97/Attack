@@ -2,10 +2,11 @@
 
 #include "tile_info.h"
 
-Entity :: Entity( const sf::Vector2f& size, const sf::Vector2f& position )
+Entity :: Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture  )
 :   m_sprite    ( size )
 {
     m_sprite.setPosition( position );
+    m_sprite.setTexture ( &texture );
 }
 
 void
@@ -94,4 +95,14 @@ Entity :: resetYVelcoity ()
     m_velocity.y = 0;
 }
 
+const bool
+Entity :: isOnGround () const
+{
+    return m_isOnGround;
+}
 
+void
+Entity :: setIfOnGround ( const bool onGround )
+{
+    m_isOnGround = onGround;
+}

@@ -6,7 +6,7 @@
 class Entity
 {
     public:
-        Entity( const sf::Vector2f& size, const sf::Vector2f& position );
+        Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture );
 
         void
         update              ( const float dt );
@@ -44,6 +44,12 @@ class Entity
         void
         resetYVelcoity      ();
 
+        const bool
+        isOnGround          () const;
+
+        void
+        setIfOnGround       ( const bool onGround );
+
     protected:
         void
         updateTilePosition  ();
@@ -57,6 +63,8 @@ class Entity
         sf::RectangleShape  m_sprite;
         sf::Vector2i        m_tilePostion;
         sf::Vector2f        m_velocity;
+
+        bool                m_isOnGround;
 };
 
 #endif // ENTITY_H

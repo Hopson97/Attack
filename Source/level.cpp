@@ -15,8 +15,6 @@ Level :: Level( const Game* game )
     Map_Loader loader;
 
     loader.loadMap( this, "Res/Maps/test.helimap", m_models );
-
-    std::cout << m_tiles.size() << std::endl;
 }
 
 void
@@ -49,6 +47,7 @@ Level :: getScreenBounds(  int& xStart, int& yStart,
                            const sf::Vector2i& playerTilePos ) const
 {
     constexpr static int tilesX = (winInfo::WIDTH / Tile::TILE_SIZE );
+
     constexpr static int tilesY = (winInfo::WIDTH / Tile::TILE_SIZE );
 
     xStart = playerTilePos.x - tilesX;

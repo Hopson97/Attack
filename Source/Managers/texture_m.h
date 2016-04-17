@@ -8,6 +8,8 @@ enum class Texture_Name
 {
     Grass
 ,   Dirt
+
+,   Player
 };
 
 namespace Manager

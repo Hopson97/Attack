@@ -23,6 +23,8 @@ void
 Texture_M :: loadEntityTextures  ()
 {
     const std::string entityPath = "Res/Textures/Entities/";
+
+    loadTexture(Texture_Name::Player, entityPath + "player.png");
 }
 
 

@@ -6,7 +6,7 @@ namespace State
 Test :: Test  ( Game* game )
 :   State_Base  ( game )
 ,   m_level     ( game )
-,   m_player    ( m_level )
+,   m_player    ( m_level, *game )
 {
 
 }

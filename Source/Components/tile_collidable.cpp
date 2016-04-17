@@ -2,6 +2,8 @@
 
 #include "tile_info.h"
 
+#include "tile_map_component_funcs.h"
+
 Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level )
 :   m_entity ( entity )
 ,   m_level  ( level )
@@ -19,7 +21,7 @@ Tile_Collidable :: update ()
 void
 Tile_Collidable :: checkXTile ( const sf::Vector2f& newPos )
 {
-    if ( tileSolid ( newPos ) )
+    if ( tileSolid ( m_level, newPos ) )
     {
         m_entity.resetXVelocity();
     }
@@ -28,7 +30,7 @@ Tile_Collidable :: checkXTile ( const sf::Vector2f& newPos )
 void
 Tile_Collidable :: checkLeftCollide    ()
 {
-    sf::Vector2f newPos = getNextPosition ();
+    sf::Vector2f newPos = getNextPosition ( m_entity );
 
     if ( m_entity.getVelocity().x < 0 )
     {
@@ -43,7 +45,7 @@ Tile_Collidable :: checkLeftCollide    ()
 void
 Tile_Collidable :: checkRightCollide   ()
 {
-    sf::Vector2f newPos = getNextPosition ();
+    sf::Vector2f newPos = getNextPosition ( m_entity );
 
     newPos.x += m_entity.getSpriteSize().x;
 
@@ -60,34 +62,13 @@ Tile_Collidable :: checkRightCollide   ()
 void
 Tile_Collidable :: checkUpCollide      ()
 {
-    sf::Vector2f newPos = getNextPosition ();
+    sf::Vector2f newPos = getNextPosition ( m_entity );
 
     if ( m_entity.getVelocity().y < 0 )
     {
-        if ( tileSolid( newPos ) )
+        if ( tileSolid( m_level, newPos ) )
         {
             m_entity.resetYVelcoity();
         }
     }
-}
-
-//Tells where the tile position in the area given is solid or not
-const bool
-Tile_Collidable :: tileSolid ( const sf::Vector2f& newPos ) const
-{
-    return m_level.getTileAt( newPos.x / Tile::TILE_SIZE,
-                               newPos.y / Tile::TILE_SIZE
-                             )
-                             ->m_isSolid;
-}
-
-//interpolates the next position of the entity
-const sf::Vector2f
-Tile_Collidable :: getNextPosition () const
-{
-    sf::Vector2f newPos;    // The new tile map position of the player
-    newPos.x = m_entity.getSpritePosition().x + m_entity.getVelocity().x;
-    newPos.y = m_entity.getSpritePosition().y + m_entity.getVelocity().y;
-
-    return newPos;
 }

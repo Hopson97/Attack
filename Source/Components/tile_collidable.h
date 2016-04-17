@@ -25,12 +25,6 @@ class Tile_Collidable
         void
         checkXTile          ( const sf::Vector2f& newPos );
 
-        const bool
-        tileSolid           ( const sf::Vector2f& newPos  ) const;
-
-        const sf::Vector2f
-        getNextPosition() const;
-
     private:
         Entity&         m_entity;
         const Level&    m_level;
