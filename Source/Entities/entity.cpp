@@ -13,6 +13,12 @@ void
 Entity :: update ( const float dt )
 {
     updateTilePosition();
+
+    for ( auto& component : m_components )
+    {
+        component->update ( dt );
+    }
+
     uniqueUpdate ( dt );
     moveSprite();
     setVelocity ( getVelocity().x * 0.8, getVelocity().y );
@@ -105,4 +111,10 @@ void
 Entity :: setIfOnGround ( const bool onGround )
 {
     m_isOnGround = onGround;
+}
+
+void
+Entity :: addComponent  ( ComponentPtr comp )
+{
+    m_components.push_back( std::move( comp ) );
 }

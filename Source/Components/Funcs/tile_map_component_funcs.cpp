@@ -2,14 +2,16 @@
 
 #include "tile_info.h"
 
+namespace Component
+{
+
 //Tells where the tile position in the area given is solid or not
 const bool
 tileSolid ( const Level& level, const sf::Vector2f& newPos )
 {
     return level.getTileAt( newPos.x / Tile::TILE_SIZE,
                             newPos.y / Tile::TILE_SIZE
-                          )
-                             ->m_isSolid;
+                          ) ->m_isSolid;
 }
 
 //interpolates the next position of the entity
@@ -22,3 +24,5 @@ getNextPosition ( const Entity& entity )
 
     return newPos;
 }
+
+} //Namespace Component

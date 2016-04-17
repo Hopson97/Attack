@@ -4,13 +4,18 @@
 #include "entity.h"
 #include "level.h"
 
-class Effected_By_Gravity
+#include "component_base.h"
+
+namespace Component
+{
+
+class Effected_By_Gravity : public Component_Base
 {
     public:
         Effected_By_Gravity( Entity& entity, const Level& level );
 
         void
-        update          ();
+        update          ( const float dt ) override;
 
     private:
         void
@@ -25,5 +30,7 @@ class Effected_By_Gravity
         Entity&   m_entity;
         const Level&    m_level;
 };
+
+} //Namespace Component
 
 #endif // EFFECTED_BY_GRAVITY_H

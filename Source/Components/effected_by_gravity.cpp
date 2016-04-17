@@ -2,6 +2,9 @@
 
 #include "tile_map_component_funcs.h" //tileSolid(), getNextPosition()
 
+namespace Component
+{
+
 Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level )
 :   m_entity ( entity )
 ,   m_level  ( level  )
@@ -10,7 +13,7 @@ Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level 
 }
 
 void
-Effected_By_Gravity :: update()
+Effected_By_Gravity :: update ( const float dt )
 {
     checkIfOnGround();
     applyGravity();
@@ -49,3 +52,5 @@ Effected_By_Gravity :: applyGravity    ()
         }
     }
 }
+
+} //Namespace Component

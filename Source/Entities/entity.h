@@ -3,6 +3,13 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <vector>
+#include <memory>
+
+#include "component_base.h"
+
+typedef std::unique_ptr<Component::Component_Base> ComponentPtr ;
+
 class Entity
 {
     public:
@@ -50,6 +57,9 @@ class Entity
         void
         setIfOnGround       ( const bool onGround );
 
+        void
+        addComponent        ( ComponentPtr comp );
+
     protected:
         void
         updateTilePosition  ();
@@ -65,6 +75,8 @@ class Entity
         sf::Vector2f        m_velocity;
 
         bool                m_isOnGround;
+
+        std::vector<ComponentPtr>    m_components;
 };
 
 #endif // ENTITY_H

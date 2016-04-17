@@ -4,6 +4,9 @@
 
 #include "tile_map_component_funcs.h"
 
+namespace Component
+{
+
 Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level )
 :   m_entity ( entity )
 ,   m_level  ( level )
@@ -11,7 +14,7 @@ Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level )
 }
 
 void
-Tile_Collidable :: update ()
+Tile_Collidable :: update ( const float dt )
 {
     checkLeftCollide();
     checkRightCollide();
@@ -72,3 +75,5 @@ Tile_Collidable :: checkUpCollide      ()
         }
     }
 }
+
+} //Namespace Component

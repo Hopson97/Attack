@@ -4,13 +4,18 @@
 #include "entity.h"
 #include "level.h"
 
-class Tile_Collidable
+#include "component_base.h"
+
+namespace Component
+{
+
+class Tile_Collidable : public Component_Base
 {
     public:
         Tile_Collidable( Entity& enity, const Level& level );
 
         void
-        update ();
+        update ( const float dt ) override;
 
     private:
         void
@@ -29,5 +34,7 @@ class Tile_Collidable
         Entity&         m_entity;
         const Level&    m_level;
 };
+
+} //Namespace Component
 
 #endif // TILE_COLLIDABLE_H

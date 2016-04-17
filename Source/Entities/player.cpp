@@ -10,6 +10,12 @@ Player :: Player(  const Level& level, const Game& game )
 ,   m_level ( level )
 {
     updateTilePosition();
+
+    addComponent( std::make_unique<Component::Tile_Collidable>
+                ( *this, m_level ) );
+
+    addComponent( std::make_unique<Component::Effected_By_Gravity>
+                ( *this, m_level ) );
 }
 
 void
@@ -32,9 +38,5 @@ Player :: input ( const float dt )
 void
 Player :: uniqueUpdate ( const float dt )
 {
-    Tile_Collidable c ( *this, m_level );
-    Effected_By_Gravity e( *this, m_level );
 
-    c.update();
-    e.update();
 }
