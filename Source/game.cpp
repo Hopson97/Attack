@@ -12,26 +12,19 @@ void
 Game :: runLoop ()
 {
     sf::Clock dtClock;
-    const   sf::Time timeStep = sf::seconds( 0.005 );
-            sf::Time accumulated_dt;
     dtClock.restart();
 
     while ( m_window.isOpen() )
     {
         if ( !m_states.empty() )
         {
-            double dt = calculateDeltaTime( dtClock, accumulated_dt );
+            double dt = calculateDeltaTime( dtClock );
 
             m_window.clear( );
 
-            m_states.peekState()->input         ( dt );
-            if ( accumulated_dt >= timeStep )
-            {
-                accumulated_dt -= timeStep;
-                m_states.peekState()->update    ( timeStep.asMicroseconds() );
-            }
-
-            m_states.peekState()->draw        ( dt );
+            m_states.peekState()->input ( dt );
+            m_states.peekState()->update( dt );
+            m_states.peekState()->draw  ( dt );
 
             m_window.update();
         }
@@ -44,11 +37,10 @@ Game :: runLoop ()
 }
 
 const double
-Game :: calculateDeltaTime ( sf::Clock& c, sf::Time& t )
+Game :: calculateDeltaTime ( sf::Clock& c )
 {
     sf::Time dt = c.restart();
-    t += dt;
-    return t.asSeconds();
+    return dt.asSeconds();
 }
 
 State::Handler&

@@ -2,6 +2,8 @@
 
 #include "map_loader.h"
 
+#include <iostream>
+
 typedef std::unique_ptr<Tile::Tile_Base>  TilePtr;
 
 Level :: Level( const Game* game )

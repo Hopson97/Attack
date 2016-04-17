@@ -41,7 +41,7 @@ class Game
         State::Handler m_states;
 
         const double
-        calculateDeltaTime ( sf::Clock& c, sf::Time& t );
+        calculateDeltaTime ( sf::Clock& c );
 
         Manager::Font_M     m_fonts;
         Manager::Texture_M  m_textures;

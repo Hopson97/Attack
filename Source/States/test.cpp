@@ -23,6 +23,9 @@ Test :: update ( const double dt )
     m_player.update( dt );
 
     m_camera.setCenter( m_player.getPixelPosition() );
+
+    m_camera.setSize( m_game->getWindow().getSize().x, m_game->getWindow().getSize().y );
+
     m_game->getWindow().setView( m_camera );
 }
 

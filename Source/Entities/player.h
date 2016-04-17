@@ -27,7 +27,22 @@ class Player
         updateTilePosition ();
 
         void
-        tileCollideCheck    ();
+        checkLeftCollide    ();
+
+        void
+        checkRightCollide   ();
+
+        void
+        checkUpCollide      ();
+
+        void
+        checkGravity        ();
+
+        void
+        checkXTile          ( const sf::Vector2f& newPos );
+
+        const bool
+        tileSolid           ( const sf::Vector2f& newPos  ) const;
 
     private:
         sf::RectangleShape  m_sprite;
@@ -37,6 +52,14 @@ class Player
         const Level*        m_level;
 
         sf::Vector2f        m_velocity;
+
+        bool m_isOnGround = false;
+
+        constexpr static double m_walkSpeed    = 70;
+
+        constexpr static double m_jumpSpeed    = 1000;
+
+        constexpr static double m_gravity      = 0.2;
 };
 
 #endif // PLAYER_H

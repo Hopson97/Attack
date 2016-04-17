@@ -24,6 +24,7 @@
 					<Add directory="Source/Managers" />
 					<Add directory="Source/Tiles" />
 					<Add directory="Source/Tiles/Util" />
+					<Add directory="Source/Components" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32s" />
@@ -66,6 +67,7 @@
 					<Add directory="Source/Managers" />
 					<Add directory="Source/Tiles" />
 					<Add directory="Source/Tiles/Util" />
+					<Add directory="Source/Components" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -95,6 +97,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Source/Components/tile_collidable.cpp" />
+		<Unit filename="Source/Components/tile_collidable.h" />
 		<Unit filename="Source/Entities/player.cpp" />
 		<Unit filename="Source/Entities/player.h" />
 		<Unit filename="Source/Managers/font_m.cpp" />
