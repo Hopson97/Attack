@@ -24,9 +24,7 @@ Effected_By_Gravity :: checkIfOnGround ()
 {
     sf::Vector2f newPos = getNextPosition( m_entity );
     newPos.y += m_entity.getSpriteSize().y;
-
     float newPosRight = newPos.x + m_entity.getSpriteSize().x; //To check the right bound of the player
-
 
     if ( !tileSolid ( m_level, newPos ) && !tileSolid ( m_level, { newPosRight, newPos.y } ) )
     {

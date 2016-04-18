@@ -6,6 +6,7 @@
 #include "game.h"
 #include "entity.h"
 #include "level.h"
+#include "animation.h"
 
 class Player : public Entity
 {
@@ -31,6 +32,8 @@ class Player : public Entity
         constexpr static double m_jumpSpeed    = 500;
 
         const Level& m_level;
+
+        Animation m_walkAnim;
 
 
 };

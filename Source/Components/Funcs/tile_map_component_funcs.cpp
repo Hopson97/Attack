@@ -14,7 +14,7 @@ tileSolid ( const Level& level, const sf::Vector2f& newPos )
                           ) ->m_isSolid;
 }
 
-//interpolates the next position of the entity
+//Predicts the next position of the entity
 const sf::Vector2f
 getNextPosition ( const Entity& entity )
 {

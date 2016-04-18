@@ -22,6 +22,13 @@ Entity :: update ( const float dt )
     uniqueUpdate ( dt );
     moveSprite();
     setVelocity ( getVelocity().x * 0.8, getVelocity().y );
+
+    checkVelocityForZero();
+
+    if ( !getVelocity().x == 0 )
+        m_isMoving = true;
+    else
+        m_isMoving = false;
 }
 
 void
@@ -117,4 +124,25 @@ void
 Entity :: addComponent  ( ComponentPtr comp )
 {
     m_components.push_back( std::move( comp ) );
+}
+
+void
+Entity :: checkVelocityForZero ()
+{
+    const float bound = 0.01;
+
+    if ( getVelocity().x < bound &&  getVelocity().x > -bound ) setVelocity(  0, getVelocity().y );
+    if ( getVelocity().y < bound &&  getVelocity().y > -bound ) setVelocity(  getVelocity().x, 0 );
+}
+
+const bool
+Entity :: isMoving ()
+{
+    return m_isMoving;
+}
+
+void
+Entity :: setTextureRect ( const sf::IntRect& txrRect )
+{
+    m_sprite.setTextureRect( txrRect );
 }

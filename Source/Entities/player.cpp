@@ -16,6 +16,21 @@ Player :: Player(  const Level& level, const Game& game )
 
     addComponent( std::make_unique<Component::Effected_By_Gravity>
                 ( *this, m_level ) );
+
+    //Set up animations
+    const float m_time = 0.08; //Time between animation frames
+    const int frameHeight = 70; //The frames are of equal size, so we can use these constants
+    const int frameWidth  = 30;
+
+    sf::IntRect standing = {0,              0, frameWidth, frameHeight };
+    sf::IntRect walk1    = {frameWidth,     0, frameWidth, frameHeight };
+    sf::IntRect walk2    = {frameWidth * 2, 0, frameWidth, frameHeight };
+
+    m_walkAnim.addFrame( { standing, m_time } );
+    m_walkAnim.addFrame( { walk1, m_time    } );
+    m_walkAnim.addFrame( { standing, m_time } );
+    m_walkAnim.addFrame( { walk2, m_time    } );
+
 }
 
 void
@@ -38,5 +53,12 @@ Player :: input ( const float dt )
 void
 Player :: uniqueUpdate ( const float dt )
 {
-
+    if ( isMoving() && isOnGround() )
+    {
+        setTextureRect( m_walkAnim.currentFrame( dt ) );
+    }
+    else
+    {   //The "standing" texture rectangle of the players sprite sheet
+        setTextureRect({0, 0, 30, 70 });
+    }
 }

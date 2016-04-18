@@ -16,56 +16,65 @@ class Entity
         Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture );
 
         void
-        update              ( const float dt );
+        update                  ( const float dt );
 
         virtual void
-        uniqueUpdate        ( const float dt ) = 0;
+        uniqueUpdate            ( const float dt ) = 0;
 
         virtual void
-        draw                ( sf::RenderWindow& window );
+        draw                    ( sf::RenderWindow& window );
 
         const double
-        getGravity          () const;
+        getGravity              () const;
 
         const sf::Vector2f&
-        getVelocity         () const;
+        getVelocity             () const;
 
         const sf::Vector2i&
-        getTilePosition     ();
+        getTilePosition         ();
 
         const sf::Vector2f
-        getSpritePosition   () const;
+        getSpritePosition       () const;
 
         const sf::Vector2f
-        getSpriteSize       () const;
+        getSpriteSize           () const;
 
         void
-        changeVelocity      ( const float x, const float y);
+        changeVelocity          ( const float x, const float y);
 
         void
-        setVelocity         ( const float x, const float y);
+        setVelocity             ( const float x, const float y);
 
         void
-        resetXVelocity      ();
+        resetXVelocity          ();
 
         void
-        resetYVelocity      ();
+        resetYVelocity          ();
 
         const bool
-        isOnGround          () const;
+        isOnGround              () const;
 
         void
-        setIfOnGround       ( const bool onGround );
+        setIfOnGround           ( const bool onGround );
 
         void
-        addComponent        ( ComponentPtr comp );
+        addComponent            ( ComponentPtr comp );
 
     protected:
         void
-        updateTilePosition  ();
+        updateTilePosition      ();
 
         void
-        moveSprite          ();
+        moveSprite              ();
+
+        void
+        checkVelocityForZero    ();
+
+        const bool
+        isMoving                ();
+
+        void
+        setTextureRect          ( const sf::IntRect& txrRect );
 
         constexpr static double m_gravity      = 0.07;
 
@@ -75,6 +84,7 @@ class Entity
         sf::Vector2f        m_velocity;
 
         bool                m_isOnGround;
+        bool                m_isMoving;
 
         std::vector<ComponentPtr>    m_components;
 };
