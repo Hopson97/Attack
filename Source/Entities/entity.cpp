@@ -71,13 +71,13 @@ Entity :: getTilePosition ()
     return m_tilePostion;
 }
 
-const sf::Vector2f
+const sf::Vector2f&
 Entity :: getSpritePosition () const
 {
     return m_sprite.getPosition();
 }
 
-const sf::Vector2f
+const sf::Vector2f&
 Entity :: getSpriteSize       () const
 {
     return m_sprite.getSize();

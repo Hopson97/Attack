@@ -5,9 +5,10 @@
 #include "tile_collidable.h"
 #include "effected_by_gravity.h"
 
-Player :: Player(  const Level& level, const Game& game )
+Player :: Player(  const Level& level, const Game& game, Window& window )
 :   Entity  ( { Tile::TILE_SIZE / 2, Tile::TILE_SIZE * 1.5 }, { 1000, 50 }, game.getTexture ( Texture_Name::Player )  )
-,   m_level ( level )
+,   m_level     ( level )
+,   m_window    ( window )
 {
     updateTilePosition();
 
@@ -15,10 +16,10 @@ Player :: Player(  const Level& level, const Game& game )
                 ( *this, m_level ) );
 
     addComponent( std::make_unique<Component::Effected_By_Gravity>
-                ( *this, m_level ) );
+                ( *this, m_level, m_window ) );
 
     //Set up animations
-    const float m_time = 0.08; //Time between animation frames
+    const float m_time = 0.03; //Time between animation frames
     const int frameHeight = 70; //The frames are of equal size, so we can use these constants
     const int frameWidth  = 30;
 

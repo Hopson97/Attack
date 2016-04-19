@@ -15,27 +15,42 @@ class Window
         Window();
 
         sf::RenderWindow&
-        get();
+        get         ();
 
         void
-        clear ( const sf::Color& colour = { 0, 0, 0 } );
+        clear       ( const sf::Color& colour = { 0, 0, 0 } );
 
         void
-        update ();
+        update      ();
 
         const bool
-        isOpen ();
+        isOpen      ();
 
         void
-        close ();
+        close       ();
+
+        void
+        turnOnShake ( const int intensity, const float timeSecs );
+
+        void
+        updateView  ();
+
+        void
+        setViewOrigin ( const sf::Vector2f& viewLoc );
 
     private:
         void
-        winEvents ();
+        winEvents   ();
 
 
     private:
-        sf::RenderWindow m_window;
+        sf::RenderWindow        m_window;
+
+        sf::View                m_view;
+        sf::Clock               m_shakeCamClock;
+        float                   m_shakeTime         = 0;
+        int                     m_shakeIntensity    = 0;
+        const sf::Vector2f*     m_viewOrigin;
 };
 
 #endif // WINDOW_H

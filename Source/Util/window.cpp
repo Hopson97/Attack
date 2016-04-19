@@ -1,6 +1,9 @@
 #include "window.h"
 
 #include <SFML/OpenGL.hpp>
+#include <iostream>
+
+#include "rand.h"
 
 Window :: Window()
 {
@@ -11,6 +14,8 @@ Window :: Window()
                       sf::ContextSettings(24) );
 
     m_window.setFramerateLimit ( 120 );
+    m_view.setSize( m_window.getSize().x,
+                      m_window.getSize().y );
 }
 
 sf::RenderWindow&
@@ -36,6 +41,52 @@ const bool
 Window :: isOpen ()
 {
     return m_window.isOpen();
+}
+
+void
+Window :: turnOnShake ( const int intensity, const float timeSecs )
+{
+    m_shakeCamClock.restart();
+
+    m_shakeIntensity    = intensity;
+    m_shakeTime         = timeSecs;
+}
+
+void
+Window :: updateView  ()
+{
+    if ( !m_viewOrigin )
+    {
+        throw std::runtime_error ( "The cameras view has not been set!" );
+    }
+    const int shake = m_shakeIntensity; //Short hand
+
+    //Center the view (presume at player?)
+    m_view.setCenter( *m_viewOrigin );
+
+    //Shakes the camera if the intensity is > 0
+    m_view.move( random::num ( -shake, shake ),
+                 random::num ( -shake, shake )
+               );
+
+    //turns off the shake (if there is one) and the shake timer is ran out
+    if ( m_shakeIntensity != 0 )
+    {
+        if ( m_shakeCamClock.getElapsedTime().asSeconds() >= m_shakeTime )
+        {
+            m_shakeCamClock.restart();
+            m_shakeIntensity = 0;
+            m_shakeTime = 0;
+        }
+    }
+
+    m_window.setView( m_view );
+}
+
+void
+Window :: setViewOrigin ( const sf::Vector2f& viewLoc )
+{
+    m_viewOrigin = &viewLoc;
 }
 
 void

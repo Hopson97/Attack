@@ -33,10 +33,10 @@ class Entity
         const sf::Vector2i&
         getTilePosition         ();
 
-        const sf::Vector2f
+        const sf::Vector2f&
         getSpritePosition       () const;
 
-        const sf::Vector2f
+        const sf::Vector2f&
         getSpriteSize           () const;
 
         void

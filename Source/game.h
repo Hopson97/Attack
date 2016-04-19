@@ -34,6 +34,9 @@ class Game
         playMusic   ( const Music_Name name );
 
         sf::RenderWindow&
+        getGameWindow   ();
+
+        Window&
         getWindow   ();
 
     private:

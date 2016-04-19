@@ -26,6 +26,7 @@
 					<Add directory="Source/Tiles/Util" />
 					<Add directory="Source/Components" />
 					<Add directory="Source/Components/Funcs" />
+					<Add directory="Source/Entities/Util" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32s" />
@@ -70,6 +71,7 @@
 					<Add directory="Source/Tiles/Util" />
 					<Add directory="Source/Components" />
 					<Add directory="Source/Components/Funcs" />
+					<Add directory="Source/Entities/Util" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -106,6 +108,8 @@
 		<Unit filename="Source/Components/effected_by_gravity.h" />
 		<Unit filename="Source/Components/tile_collidable.cpp" />
 		<Unit filename="Source/Components/tile_collidable.h" />
+		<Unit filename="Source/Entities/Util/animation.cpp" />
+		<Unit filename="Source/Entities/Util/animation.h" />
 		<Unit filename="Source/Entities/entity.cpp" />
 		<Unit filename="Source/Entities/entity.h" />
 		<Unit filename="Source/Entities/player.cpp" />

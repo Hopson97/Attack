@@ -14,6 +14,8 @@ Game :: runLoop ()
     sf::Clock dtClock;
     dtClock.restart();
 
+    m_music.playSong( Music_Name::Hell_March );
+
     while ( m_window.isOpen() )
     {
         if ( !m_states.empty() )
@@ -74,7 +76,13 @@ Game :: playMusic   ( const Music_Name name )
 }
 
 sf::RenderWindow&
-Game :: getWindow   ()
+Game :: getGameWindow   ()
 {
     return m_window.get();
+}
+
+Window&
+Game :: getWindow   ()
+{
+    return m_window;
 }
