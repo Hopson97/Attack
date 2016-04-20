@@ -12,10 +12,12 @@ Window :: Window()
                       "Window",
                       sf::Style::Default,
                       sf::ContextSettings(24) );
-
     m_window.setFramerateLimit ( 120 );
+    m_window.setPosition ( { 0, 0 } );
+
+
     m_view.setSize( m_window.getSize().x,
-                      m_window.getSize().y );
+                    m_window.getSize().y );
 }
 
 sf::RenderWindow&

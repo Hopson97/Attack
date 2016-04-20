@@ -6,7 +6,7 @@
 #include "effected_by_gravity.h"
 
 Player :: Player(  const Level& level, const Game& game, Window& window )
-:   Entity  ( { Tile::TILE_SIZE / 2, Tile::TILE_SIZE * 1.5 }, { 1000, 50 }, game.getTexture ( Texture_Name::Player )  )
+:   Entity  ( { Tile::TILE_SIZE / 2, Tile::TILE_SIZE * 1.5 }, { 1000, 350 }, game.getTexture ( Texture_Name::Player )  )
 ,   m_level     ( level )
 ,   m_window    ( window )
 {
@@ -39,7 +39,7 @@ Player :: input ( const float dt )
 {
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::W ) && isOnGround() )
     {
-        changeVelocity (  0, -m_jumpSpeed * dt );
+        changeVelocity (  0, -m_jumpSpeed );
     }
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A ) )
     {
@@ -58,8 +58,12 @@ Player :: uniqueUpdate ( const float dt )
     {
         setTextureRect( m_walkAnim.currentFrame( dt ) );
     }
+    else if ( !isOnGround())
+    {   //The "walk1" texture rectangle of the players sprite sheet for when standing
+        setTextureRect({30, 0, 30, 70 });
+    }
     else
-    {   //The "standing" texture rectangle of the players sprite sheet
+    {
         setTextureRect({0, 0, 30, 70 });
     }
 }

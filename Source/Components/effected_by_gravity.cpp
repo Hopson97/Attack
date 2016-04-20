@@ -16,8 +16,8 @@ Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level,
 void
 Effected_By_Gravity :: update ( const float dt )
 {
-    checkIfOnGround();
-    applyGravity();
+    checkIfOnGround ();
+    applyGravity    ();
 }
 
 void
@@ -35,7 +35,7 @@ Effected_By_Gravity :: checkIfOnGround ()
 }
 
 void
-Effected_By_Gravity :: applyGravity    ()
+Effected_By_Gravity :: applyGravity    ( )
 {
     sf::Vector2f newPos = getNextPosition( m_entity );          //Gets the position of the underneath the player (world Coordinates)
     newPos.y += m_entity.getSpriteSize().y;

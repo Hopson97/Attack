@@ -30,7 +30,7 @@ class Player : public Entity
     private:
         constexpr static double m_walkSpeed    = 75;
 
-        constexpr static double m_jumpSpeed    = 500;
+        constexpr static double m_jumpSpeed    = 5;
 
         const Level&    m_level;
 

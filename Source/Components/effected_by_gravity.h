@@ -20,9 +20,6 @@ class Effected_By_Gravity : public Component_Base
 
     private:
         void
-        checkGravity    ();
-
-        void
         applyGravity    ();
 
         void

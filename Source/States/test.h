@@ -5,6 +5,8 @@
 #include "level.h"
 #include "player.h"
 
+#include "dynamic_particle_batch.h"
+
 namespace State
 {
 
@@ -30,6 +32,7 @@ class Test : public State_Base
 
         sf::View    m_camera;
 
+        GravityParticles      m_bloodDynamic;
 };
 
 }
