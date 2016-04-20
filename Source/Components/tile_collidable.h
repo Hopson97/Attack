@@ -19,13 +19,13 @@ class Tile_Collidable : public Component_Base
 
     private:
         void
-        checkLeftCollide    ();
+        checkLeftCollide    ( const float dt );
 
         void
-        checkRightCollide   ();
+        checkRightCollide   ( const float dt );
 
         void
-        checkUpCollide      ();
+        checkUpCollide      ( const float dt );
 
         void
         checkXTile          ( const sf::Vector2f& newPos );

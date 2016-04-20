@@ -15,21 +15,22 @@ class Effected_By_Gravity : public Component_Base
 {
     public:
         Effected_By_Gravity( Entity& entity, const Level& level, Window& window, GravityParticles& particles );
+        Effected_By_Gravity( Entity& entity, const Level& level, Window& window);
 
         void
         update          ( const float dt ) override;
 
     private:
         void
-        applyGravity    ();
+        applyGravity    ( const float dt );
 
         void
-        checkIfOnGround ();
+        checkIfOnGround ( const float dt );
 
         Entity&             m_entity;
         const Level&        m_level;
         Window&             m_window;
-        GravityParticles&   m_landingParticles;
+        GravityParticles*   m_landingParticles;
 
 };
 

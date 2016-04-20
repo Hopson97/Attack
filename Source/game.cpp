@@ -2,6 +2,8 @@
 
 #include "States/test.h"
 
+#include "fps_counter.h"
+
 Game :: Game ()
 {
     m_states.changeState( new State::Test ( this ) );
@@ -13,6 +15,8 @@ Game :: runLoop ()
 {
     sf::Clock dtClock;
     dtClock.restart();
+
+    FPS_Counter fps_counter;
 
     m_music.playSong( Music_Name::Hell_March );
 
@@ -27,6 +31,8 @@ Game :: runLoop ()
             m_states.peekState()->input ( dt );
             m_states.peekState()->update( dt );
             m_states.peekState()->draw  ( dt );
+
+            fps_counter.update();
 
             m_window.update();
         }

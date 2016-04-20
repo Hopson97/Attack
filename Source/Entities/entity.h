@@ -46,6 +46,12 @@ class Entity
         setVelocity             ( const float x, const float y);
 
         void
+        setRotation             ( const float rotation );
+
+        const float
+        getRotation             () const;
+
+        void
         resetXVelocity          ();
 
         void
@@ -65,7 +71,7 @@ class Entity
         updateTilePosition      ();
 
         void
-        moveSprite              ();
+        moveSprite              ( const float dt );
 
         void
         checkVelocityForZero    ();

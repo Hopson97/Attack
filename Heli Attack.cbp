@@ -27,6 +27,7 @@
 					<Add directory="Source/Components" />
 					<Add directory="Source/Components/Funcs" />
 					<Add directory="Source/Entities/Util" />
+					<Add directory="Source/Guns" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32s" />
@@ -72,6 +73,7 @@
 					<Add directory="Source/Components" />
 					<Add directory="Source/Components/Funcs" />
 					<Add directory="Source/Entities/Util" />
+					<Add directory="Source/Guns" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -114,6 +116,8 @@
 		<Unit filename="Source/Entities/entity.h" />
 		<Unit filename="Source/Entities/player.cpp" />
 		<Unit filename="Source/Entities/player.h" />
+		<Unit filename="Source/Guns/bullet.cpp" />
+		<Unit filename="Source/Guns/bullet.h" />
 		<Unit filename="Source/Managers/font_m.cpp" />
 		<Unit filename="Source/Managers/font_m.h" />
 		<Unit filename="Source/Managers/music_m.cpp" />
@@ -122,6 +126,10 @@
 		<Unit filename="Source/Managers/sound_m.h" />
 		<Unit filename="Source/Managers/texture_m.cpp" />
 		<Unit filename="Source/Managers/texture_m.h" />
+		<Unit filename="Source/Particles/dynamic_particle_batch.cpp" />
+		<Unit filename="Source/Particles/dynamic_particle_batch.h" />
+		<Unit filename="Source/Particles/static_particle_batch.cpp" />
+		<Unit filename="Source/Particles/static_particle_batch.h" />
 		<Unit filename="Source/States/handler.cpp" />
 		<Unit filename="Source/States/handler.h" />
 		<Unit filename="Source/States/state_base.cpp" />
@@ -139,12 +147,13 @@
 		<Unit filename="Source/Tiles/grass.h" />
 		<Unit filename="Source/Tiles/tile.cpp" />
 		<Unit filename="Source/Tiles/tile.h" />
+		<Unit filename="Source/Util/fps_counter.cpp" />
+		<Unit filename="Source/Util/fps_counter.h" />
+		<Unit filename="Source/Util/math_funcs.h" />
 		<Unit filename="Source/Util/rand.cpp" />
 		<Unit filename="Source/Util/rand.h" />
 		<Unit filename="Source/Util/window.cpp" />
 		<Unit filename="Source/Util/window.h" />
-		<Unit filename="Source/dynamic_particle_batch.cpp" />
-		<Unit filename="Source/dynamic_particle_batch.h" />
 		<Unit filename="Source/game.cpp" />
 		<Unit filename="Source/game.h" />
 		<Unit filename="Source/level.cpp" />
@@ -152,8 +161,6 @@
 		<Unit filename="Source/main.cpp" />
 		<Unit filename="Source/map_loader.cpp" />
 		<Unit filename="Source/map_loader.h" />
-		<Unit filename="Source/static_particle_batch.cpp" />
-		<Unit filename="Source/static_particle_batch.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

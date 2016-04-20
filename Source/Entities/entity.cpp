@@ -20,7 +20,8 @@ Entity :: update ( const float dt )
     }
 
     uniqueUpdate ( dt );
-    moveSprite();
+    moveSprite   ( dt);
+
     setVelocity ( getVelocity().x * 0.8, getVelocity().y );
 
     checkVelocityForZero();
@@ -47,9 +48,9 @@ Entity :: updateTilePosition ()
 }
 
 void
-Entity :: moveSprite ()
+Entity :: moveSprite ( const float dt )
 {
-    m_sprite.move( getVelocity() );
+    m_sprite.move( getVelocity().x , getVelocity().y   );
 }
 
 const double
@@ -94,6 +95,18 @@ void
 Entity :: setVelocity ( const float x, const float y)
 {
     m_velocity = { x, y };
+}
+
+void
+Entity :: setRotation ( const float rotation )
+{
+    m_sprite.setRotation( rotation );
+}
+
+const float
+Entity :: getRotation () const
+{
+    return m_sprite.getRotation();
 }
 
 void

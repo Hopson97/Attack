@@ -16,9 +16,9 @@ Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level )
 void
 Tile_Collidable :: update ( const float dt )
 {
-    checkLeftCollide();
-    checkRightCollide();
-    checkUpCollide();
+    checkLeftCollide    ( dt );
+    checkRightCollide   ( dt);
+    checkUpCollide      ( dt);
 }
 
 void
@@ -40,7 +40,7 @@ Tile_Collidable :: checkYTile ( const sf::Vector2f& newPos )
 }
 
 void
-Tile_Collidable :: checkLeftCollide    ()
+Tile_Collidable :: checkLeftCollide    ( const float dt )
 {
     sf::Vector2f newPos = getNextPosition ( m_entity );
 
@@ -55,7 +55,7 @@ Tile_Collidable :: checkLeftCollide    ()
 }
 
 void
-Tile_Collidable :: checkRightCollide   ()
+Tile_Collidable :: checkRightCollide   ( const float dt )
 {
     sf::Vector2f newPos = getNextPosition ( m_entity );
 
@@ -72,7 +72,7 @@ Tile_Collidable :: checkRightCollide   ()
 }
 
 void
-Tile_Collidable :: checkUpCollide      ()
+Tile_Collidable :: checkUpCollide      ( const float dt )
 {
     sf::Vector2f newPos = getNextPosition ( m_entity );
 
