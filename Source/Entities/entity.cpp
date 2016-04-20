@@ -57,7 +57,7 @@ Entity :: moveSprite ( const float dt )
 const double
 Entity :: getGravity () const
 {
-    return m_gravity;
+    return m_level.getGravity();
 }
 
 const sf::Vector2f&

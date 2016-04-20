@@ -40,6 +40,9 @@ class Level
                           int& xEnd,   int& yEnd,
                           const sf::Vector2i& playerTilePos ) const;
 
+        const int
+        getGravity      () const;
+
     private:
         std::vector<TilePtr> m_tiles;
 
@@ -47,6 +50,8 @@ class Level
 
         int m_mapHeight;
         int m_mapWidth;
+
+        constexpr static int m_GRAVITY = 2000;
 };
 
 #endif // LEVEL_H

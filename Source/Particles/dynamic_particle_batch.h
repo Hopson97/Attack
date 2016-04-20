@@ -29,7 +29,7 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
             Particle        ( const Level& level, const sf::Vector2f& direction, sf::Vertex& v );
 
             const bool
-            onGround        ( const sf::Vertex& vertex );
+            onGround        ( const sf::Vertex& vertex, const float dt );
 
             const sf::Vector2f&
             getVelocity     () const;

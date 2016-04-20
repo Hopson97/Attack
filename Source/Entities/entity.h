@@ -83,8 +83,6 @@ class Entity
         void
         setTextureRect          ( const sf::IntRect& txrRect );
 
-        constexpr static double m_gravity      = 2000;
-
     private:
         sf::RectangleShape  m_sprite;
         sf::Vector2i        m_tilePostion;

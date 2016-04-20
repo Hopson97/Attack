@@ -27,9 +27,9 @@ GravityParticles :: update ( const float dt )
         Particle& p     = m_particles[i];
         sf::Vertex& v    = m_vertices[i];
 
-        v.position += p.getVelocity();
+        v.position += p.getVelocity() * dt;
 
-        if ( p.onGround( v ) )
+        if ( p.onGround( v, dt ) )
         {
             //m_particles.erase( m_particles.begin() + i );
         }
@@ -69,16 +69,19 @@ GravityParticles :: Particle :: Particle ( const Level& level, const sf::Vector2
     while ( m_velocity.y == 0)
         m_velocity.y = random::num( dy > 0 ? 1  : dy,
                                     dy > 0 ? dy : -1 );
+    //Multiply by 50 because it is too slow otherwise (thanks to delta time )
+    m_velocity.x *= 50;
+    m_velocity.y *= 50;
 }
 
 
 //Particle :: onGround
 const bool
-GravityParticles :: Particle :: onGround( const sf::Vertex& vertex )
+GravityParticles :: Particle :: onGround( const sf::Vertex& vertex, const float dt )
 {
     if( !isOnSolidTile(vertex) )
     {
-        m_velocity.y += 0.2;
+        m_velocity.y += m_level->getGravity() * dt;
         return false;
     }
     else if ( isOnSolidTile(vertex) )
