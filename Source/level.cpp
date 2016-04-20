@@ -3,7 +3,7 @@
 #include "map_loader.h"
 #include "tile_info.h"
 
-#include <iostream>
+#include <string>
 
 typedef std::unique_ptr<Tile::Tile_Base>  TilePtr;
 
@@ -72,5 +72,22 @@ Level :: getTileAt ( const int x, const int y ) const
 const TilePtr&
 Level :: getTileAt ( const sf::Vector2i& tilePosition ) const
 {
-    return m_tiles.at ( tilePosition.y * m_mapWidth + tilePosition.x );
+    if ( (unsigned)tilePosition.y * m_mapWidth + tilePosition.x > m_tiles.size() - 1 )
+    {
+        std::string xLoc = std::to_string( tilePosition.x );
+        std::string yLoc = std::to_string( tilePosition.y );
+
+        std::string coords = "tile map location (" + xLoc + "," + yLoc + ")";
+
+        std::string xLocMax = std::to_string( m_mapWidth  );
+        std::string yLocMax = std::to_string( m_mapHeight );
+
+        std::string coordsMax = "(" + xLocMax + "," + yLocMax + ")";
+
+        throw std::runtime_error ( "Tried to access the Tile at: " + coords + ", where the maximum size is " + coordsMax + ".");
+    }
+    else
+    {
+        return m_tiles.at ( tilePosition.y * m_mapWidth + tilePosition.x );
+    }
 }

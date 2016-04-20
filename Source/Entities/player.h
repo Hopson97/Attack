@@ -8,11 +8,12 @@
 #include "level.h"
 #include "animation.h"
 #include "window.h"
+#include "Particles/dynamic_particle_batch.h"
 
 class Player : public Entity
 {
     public:
-        Player          ( const Level& level, const Game& game, Window& window );
+        Player          ( const Level& level, const Game& game, Window& window, GravityParticles& bloodParticles );
 
         void
         input           ( const float dt );
@@ -37,8 +38,6 @@ class Player : public Entity
         Animation       m_walkAnim;
 
         Window&         m_window;
-
-
 };
 
 #endif // PLAYER_H

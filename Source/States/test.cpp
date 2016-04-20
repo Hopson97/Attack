@@ -6,7 +6,7 @@ namespace State
 Test :: Test  ( Game* game )
 :   State_Base      ( game )
 ,   m_level         ( game )
-,   m_player        ( m_level, *game, game->getWindow() )
+,   m_player        ( m_level, *game, game->getWindow(), m_bloodDynamic )
 ,   m_bloodDynamic  ( sf::Color::Red, m_level )
 {
     m_game->getWindow().setViewOrigin(  m_player.getSpritePosition() );
@@ -27,8 +27,6 @@ Test :: update ( const double dt )
 
 
     m_game->getWindow().updateView();
-
-    m_bloodDynamic.addParticles( 1, m_player.getSpritePosition());
 
     m_bloodDynamic.update( dt );
 }

@@ -13,7 +13,7 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
         GravityParticles( const sf::Color& colour, const Level& level );
 
         void
-        addParticles        ( const int count, const sf::Vector2f& location );
+        addParticles        ( const int count, const sf::Vector2f& location, const sf::Vector2f& direction );
 
         void
         update              ( const float dt );
@@ -26,7 +26,7 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
         class Particle
         {
         public:
-            Particle        ( const Level& level );
+            Particle        ( const Level& level, const sf::Vector2f& direction );
 
             const bool
             onGround        ( const sf::Vertex& vertex );

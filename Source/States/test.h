@@ -5,7 +5,7 @@
 #include "level.h"
 #include "player.h"
 
-#include "dynamic_particle_batch.h"
+#include "Particles/dynamic_particle_batch.h"
 
 namespace State
 {
