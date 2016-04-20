@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 
+#include "level.h"
 #include "component_base.h"
 
 typedef std::unique_ptr<Component::Component_Base> ComponentPtr ;
@@ -13,7 +14,7 @@ typedef std::unique_ptr<Component::Component_Base> ComponentPtr ;
 class Entity
 {
     public:
-        Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture );
+        Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture, const Level& level );
 
         void
         update                  ( const float dt );
@@ -82,12 +83,14 @@ class Entity
         void
         setTextureRect          ( const sf::IntRect& txrRect );
 
-        constexpr static double m_gravity      = 0.07;
+        constexpr static double m_gravity      = 2000;
 
     private:
         sf::RectangleShape  m_sprite;
         sf::Vector2i        m_tilePostion;
         sf::Vector2f        m_velocity;
+
+        const Level&        m_level;
 
         bool                m_isOnGround;
         bool                m_isMoving;

@@ -42,7 +42,7 @@ Tile_Collidable :: checkYTile ( const sf::Vector2f& newPos )
 void
 Tile_Collidable :: checkLeftCollide    ( const float dt )
 {
-    sf::Vector2f newPos = getNextPosition ( m_entity );
+    sf::Vector2f newPos = getNextPosition ( m_entity, dt );
 
     if ( m_entity.getVelocity().x < 0 )
     {
@@ -57,7 +57,7 @@ Tile_Collidable :: checkLeftCollide    ( const float dt )
 void
 Tile_Collidable :: checkRightCollide   ( const float dt )
 {
-    sf::Vector2f newPos = getNextPosition ( m_entity );
+    sf::Vector2f newPos = getNextPosition ( m_entity, dt );
 
     newPos.x += m_entity.getSpriteSize().x;
 
@@ -74,7 +74,7 @@ Tile_Collidable :: checkRightCollide   ( const float dt )
 void
 Tile_Collidable :: checkUpCollide      ( const float dt )
 {
-    sf::Vector2f newPos = getNextPosition ( m_entity );
+    sf::Vector2f newPos = getNextPosition ( m_entity, dt );
 
     if ( m_entity.getVelocity().y < 0 )
     {

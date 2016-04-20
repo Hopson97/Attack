@@ -2,8 +2,9 @@
 
 #include "tile_info.h"
 
-Entity :: Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture  )
+Entity :: Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture, const Level& level  )
 :   m_sprite    ( size )
+,   m_level     ( level )
 {
     m_sprite.setPosition( position );
     m_sprite.setTexture ( &texture );
@@ -20,7 +21,7 @@ Entity :: update ( const float dt )
     }
 
     uniqueUpdate ( dt );
-    moveSprite   ( dt);
+    moveSprite   ( dt );
 
     setVelocity ( getVelocity().x * 0.8, getVelocity().y );
 
@@ -50,7 +51,7 @@ Entity :: updateTilePosition ()
 void
 Entity :: moveSprite ( const float dt )
 {
-    m_sprite.move( getVelocity().x , getVelocity().y   );
+    m_sprite.move( m_velocity * dt );
 }
 
 const double

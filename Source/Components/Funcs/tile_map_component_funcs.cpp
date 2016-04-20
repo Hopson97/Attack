@@ -18,11 +18,11 @@ tileSolid ( const Level& level, const sf::Vector2f& newPos )
 
 //Predicts the next position of the entity
 const sf::Vector2f
-getNextPosition ( const Entity& entity)
+getNextPosition ( const Entity& entity, const float dt )
 {
     sf::Vector2f newPos;    // The new tile map position of the player
-    newPos.x = (entity.getSpritePosition().x + entity.getVelocity().x );
-    newPos.y = (entity.getSpritePosition().y + entity.getVelocity().y );
+    newPos.x = (entity.getSpritePosition().x ) + entity.getVelocity().x * dt ;
+    newPos.y = (entity.getSpritePosition().y ) + entity.getVelocity().y * dt;
 
     return newPos;
 }

@@ -5,17 +5,16 @@
 GravityParticles :: GravityParticles( const sf::Color& colour, const Level& level )
 :   m_colour        ( colour )
 ,   m_level         ( level )
-{
-    //ctor
-}
+{ }
 
 void
 GravityParticles :: addParticles ( const int count, const sf::Vector2f& location, const sf::Vector2f& direction )
 {
     for ( int i = 0 ; i < count ; i ++ )
     {
-        m_particles.emplace_back    ( m_level, direction );
+        //This is so we don't have to say "-1" thus saving a function call i guess
         m_vertices.append           ( sf::Vertex( location, m_colour) );
+        m_particles.emplace_back    ( m_level, direction, m_vertices[m_vertices.getVertexCount()-1] );
     }
 }
 
@@ -26,11 +25,14 @@ GravityParticles :: update ( const float dt )
     {
         //Get the vertex and particle at i index for shorthand
         Particle& p     = m_particles[i];
-        sf::Vertex& v   = m_vertices[i];
+        sf::Vertex& v    = m_vertices[i];
 
         v.position += p.getVelocity();
 
-        p.onGround( v );
+        if ( p.onGround( v ) )
+        {
+            //m_particles.erase( m_particles.begin() + i );
+        }
     }
 }
 
@@ -44,8 +46,8 @@ GravityParticles :: draw  ( sf::RenderTarget& window, sf::RenderStates states ) 
 
 ///PARTICLE METHODS AND STUFF BELOW HERE
 //Particle constructor
-GravityParticles :: Particle :: Particle ( const Level& level, const sf::Vector2f& direction )
-:   m_level ( level )
+GravityParticles :: Particle :: Particle ( const Level& level, const sf::Vector2f& direction, sf::Vertex& vertex )
+:   m_level  ( &level )
 {
     const float dy = direction.y;
     const float dx = direction.x;
@@ -69,16 +71,17 @@ GravityParticles :: Particle :: Particle ( const Level& level, const sf::Vector2
                                     dy > 0 ? dy : -1 );
 }
 
+
 //Particle :: onGround
 const bool
 GravityParticles :: Particle :: onGround( const sf::Vertex& vertex )
 {
-    if( !isOnSolidTile( vertex ) )
+    if( !isOnSolidTile(vertex) )
     {
         m_velocity.y += 0.2;
         return false;
     }
-    else if ( isOnSolidTile( vertex ) )
+    else if ( isOnSolidTile(vertex) )
     {
         m_velocity.y = 0;
         m_velocity.x = 0;
@@ -99,7 +102,7 @@ GravityParticles :: Particle :: isOnSolidTile( const sf::Vertex& vertex )
     if ( tilePositionY < 0 ) tilePositionY = 0;
 
 
-    return m_level.getTileAt( tilePositionX, tilePositionY )->m_isSolid;
+    return m_level->getTileAt( tilePositionX, tilePositionY )->m_isSolid;
 }
 
 //Particle :: getVecloity

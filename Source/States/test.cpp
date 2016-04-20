@@ -18,6 +18,13 @@ Test :: input ( const double dt )
     m_player.input( dt );
 
     m_game->getGameWindow().setView( m_camera );
+
+    if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
+    {
+        sf::Vector2i pos = sf::Mouse::getPosition( m_game->getGameWindow() );
+
+        m_bullets.emplace_back( std::make_unique<Bullet>(m_level, *m_game, m_player, m_game->getWindow(), sf::Vector2f(pos.x, pos.y) ) );
+    }
 }
 
 void
@@ -38,6 +45,8 @@ Test :: draw( const double dt )
     m_level.draw    ( window, m_player.getTilePosition() );
     m_player.draw   ( window );
     m_bloodDynamic.draw( window );
+
+    for ( auto& bullet : m_bullets ) bullet->draw( window );
 }
 
 } //Namespace State

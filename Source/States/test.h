@@ -4,6 +4,7 @@
 #include "game.h"
 #include "level.h"
 #include "player.h"
+#include "bullet.h"
 
 #include "Particles/dynamic_particle_batch.h"
 
@@ -33,6 +34,8 @@ class Test : public State_Base
         sf::View    m_camera;
 
         GravityParticles      m_bloodDynamic;
+
+        std::vector<std::unique_ptr<Bullet>> m_bullets;
 };
 
 }

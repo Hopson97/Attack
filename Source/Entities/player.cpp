@@ -6,7 +6,7 @@
 #include "effected_by_gravity.h"
 
 Player :: Player(  const Level& level, const Game& game, Window& window, GravityParticles& bloodParticles )
-:   Entity  ( { Tile::TILE_SIZE / 2, Tile::TILE_SIZE * 1.5 }, { 1000, 350 }, game.getTexture ( Texture_Name::Player )  )
+:   Entity  ( { Tile::TILE_SIZE / 2, Tile::TILE_SIZE * 1.5 }, { 1000, 350 }, game.getTexture ( Texture_Name::Player ), level  )
 ,   m_level     ( level )
 ,   m_window    ( window )
 {
@@ -43,11 +43,11 @@ Player :: input ( const float dt )
     }
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A ) )
     {
-        changeVelocity ( -m_walkSpeed * dt, 0 );
+        changeVelocity ( -m_walkSpeed, 0 );
     }
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D ) )
     {
-        changeVelocity ( m_walkSpeed * dt, 0 );
+        changeVelocity ( m_walkSpeed, 0 );
     }
 }
 

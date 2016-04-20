@@ -28,7 +28,7 @@ Effected_By_Gravity :: update ( const float dt )
 void
 Effected_By_Gravity :: checkIfOnGround ( const float dt )
 {
-    sf::Vector2f newPos = getNextPosition( m_entity );  //Gets the position of the underneath the player (world Coordinates)
+    sf::Vector2f newPos = getNextPosition( m_entity, dt );  //Gets the position of the underneath the player (world Coordinates)
     newPos.y += m_entity.getSpriteSize().y;
     float newPosRight = newPos.x + m_entity.getSpriteSize().x; //To check the right bound of the player
 
@@ -42,27 +42,27 @@ Effected_By_Gravity :: checkIfOnGround ( const float dt )
 void
 Effected_By_Gravity :: applyGravity    ( const float dt )
 {
-    sf::Vector2f newPos = getNextPosition( m_entity );          //Gets the position of the underneath the player (world Coordinates)
+    sf::Vector2f newPos = getNextPosition( m_entity, dt );          //Gets the position of the underneath the player (world Coordinates)
     newPos.y += m_entity.getSpriteSize().y;
     float newPosRight = newPos.x + m_entity.getSpriteSize().x; //To check the right bound of the player, an X-Coordinate
 
     if ( !m_entity.isOnGround() )
     {
-        m_entity.changeVelocity( 0,  m_entity.getGravity() );   //If the player isn't on the ground, its velocity "increases" (dumb opengl coordinate systems amiright)
+        m_entity.changeVelocity( 0,  m_entity.getGravity() * dt );   //If the player isn't on the ground, its velocity "increases" (dumb opengl coordinate systems amiright)
 
         //If the player lands on a solid tile
         if ( tileSolid( m_level, newPos ) || tileSolid ( m_level, { newPosRight, newPos.y } ) )
         {
             //Calculate the "intensity" of the fall
-            int fallIntensity = -m_entity.getVelocity().y / 3;
+            int fallIntensity = -m_entity.getVelocity().y / 200;
 
             //Add particles to the landing site, if one was added into this component
             if( m_landingParticles )
             {
-                m_landingParticles->addParticles( abs ( fallIntensity * 10 ),      //Particles added is proportinal to the fall intensity
+                m_landingParticles->addParticles( abs ( fallIntensity * 5 ),      //Particles added is proportinal to the fall intensity
                                                 { ( newPos.x + newPosRight ) / 2    //X position, between the 2 bottom edge vertex of player,
                                                 ,   newPos.y - m_entity.getSpriteSize().y / 5},   //Y position -size... so particles don't insta stuck in the ground
-                                                {0, (float)fallIntensity * 2 }            //Direction
+                                                {0, (float)fallIntensity }            //Direction
                                                 );
             }
 
