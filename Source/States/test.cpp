@@ -42,7 +42,7 @@ Test :: update ( const double dt )
         sf::RenderWindow& win = m_game->getGameWindow();
         sf::Vector2f pos = win.mapPixelToCoords ( sf::Mouse::getPosition( win ) );
 
-        m_bullets.emplace_back( std::make_unique<Bullet>(m_level, *m_game, m_player, m_game->getWindow(), pos ) );
+        m_bullets.emplace_back( std::make_unique<Bullet>(m_level, *m_game, m_player, m_game->getWindow(), pos, m_dirtParticles ) );
 
         bulletDelay.restart();
     }

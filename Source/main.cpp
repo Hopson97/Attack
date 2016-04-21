@@ -1,7 +1,15 @@
 #include "game.h"
 
-#include <iostream>
-#include "rand.h"
+/**
+
+To do:
+    -> Both the Entity and Particle class have the OOB collision detection.
+        So we need something to avoid the DRY here!
+
+
+
+
+*/
 
 int main()
 {

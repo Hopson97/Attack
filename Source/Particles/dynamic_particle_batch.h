@@ -22,6 +22,25 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
         draw                ( sf::RenderTarget& window, sf::RenderStates states = sf::RenderStates::Default ) const override;
 
     private:
+        void
+        checkOutOfBounds        ( sf::Vertex& vertex );
+
+        void
+        checkOOBUp              ( sf::Vertex& vertex );
+
+        void
+        checkOOBDown            ( sf::Vertex& vertex );
+
+        void
+        checkOOBLeft            ( sf::Vertex& vertex );
+
+        void
+        checkOOBRight           ( sf::Vertex& vertex );
+
+        const sf::Vector2i
+        vertexTilePosition      ( sf::Vertex& vertex );
+
+    private:
         //Particle class
         class Particle
         {

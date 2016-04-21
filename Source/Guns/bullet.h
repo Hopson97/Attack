@@ -7,10 +7,12 @@
 #include "player.h"
 #include "window.h"
 
+#include "Particles/dynamic_particle_batch.h"
+
 class Bullet    :   public Entity
 {
     public:
-        Bullet      ( const Level& level, const Game& game, const Player& player, Window& window, const sf::Vector2f& targetLocation );
+        Bullet      ( const Level& level, const Game& game, const Player& player, Window& window, const sf::Vector2f& targetLocation, GravityParticles& particles );
 
         bool
         isFallen    () const;

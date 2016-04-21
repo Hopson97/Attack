@@ -7,9 +7,10 @@
 namespace Component
 {
 
-Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level )
-:   m_entity ( entity )
-,   m_level  ( level )
+Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level, GravityParticles* dirt )
+:   m_entity        ( entity )
+,   m_level         ( level )
+,   m_dirtParticles ( dirt )
 {
 }
 
@@ -26,6 +27,7 @@ Tile_Collidable :: checkXTile ( const sf::Vector2f& newPos )
 {
     if ( tileSolid ( m_level, newPos ) )
     {
+        addParticles();
         m_entity.resetXVelocity();
     }
 }
@@ -35,6 +37,7 @@ Tile_Collidable :: checkYTile ( const sf::Vector2f& newPos )
 {
     if ( tileSolid ( m_level, newPos ) )
     {
+        addParticles();
         m_entity.resetYVelocity();
     }
 }
@@ -83,6 +86,15 @@ Tile_Collidable :: checkUpCollide      ( const float dt )
         newPos.x += m_entity.getSpriteSize().x - 1;
 
         checkYTile( newPos );
+    }
+}
+
+void
+Tile_Collidable :: addParticles ()
+{
+    if ( m_dirtParticles )
+    {
+        m_dirtParticles->addParticles( 25, m_entity.getSpritePosition(), m_entity.getVelocity() );
     }
 }
 

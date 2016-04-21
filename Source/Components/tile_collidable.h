@@ -6,13 +6,15 @@
 
 #include "component_base.h"
 
+#include "Particles/dynamic_particle_batch.h"
+
 namespace Component
 {
 
 class Tile_Collidable : public Component_Base
 {
     public:
-        Tile_Collidable( Entity& enity, const Level& level );
+        Tile_Collidable( Entity& enity, const Level& level, GravityParticles* dirt = nullptr );
 
         void
         update ( const float dt ) override;
@@ -33,9 +35,14 @@ class Tile_Collidable : public Component_Base
         void
         checkYTile          ( const sf::Vector2f& newPos );
 
+        void
+        addParticles        ();
+
     private:
         Entity&         m_entity;
         const Level&    m_level;
+
+        GravityParticles*   m_dirtParticles;
 };
 
 } //Namespace Component

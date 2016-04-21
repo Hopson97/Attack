@@ -113,3 +113,64 @@ GravityParticles :: Particle :: getVelocity () const
 {
     return m_velocity;
 }
+
+///Out of bounds chekcs
+
+void
+GravityParticles :: checkOutOfBounds ( sf::Vertex& vertex )
+{
+    checkOOBDown    (vertex);
+    checkOOBUp      (vertex);
+    checkOOBLeft    (vertex);
+    checkOOBRight   (vertex);
+}
+
+//Check if the entity is at the top of the map
+void
+GravityParticles :: checkOOBUp ( sf::Vertex& vertex )
+{
+    if ( vertexTilePosition(vertex).y <= 0 )
+    {
+        vertex.position = { vertex.position.x, 1 };
+    }
+}
+
+//Check if the entity is at the bottom of the map
+void
+GravityParticles :: checkOOBDown ( sf::Vertex& vertex )
+{
+    if ( vertexTilePosition(vertex).y >= m_level.getHeight() )
+    {
+        vertex.position = { vertex.position.x, (float)Tile::TILE_SIZE * m_level.getHeight() - 1 };
+    }
+}
+
+//Check if the entity is at the left of the map
+void
+GravityParticles :: checkOOBLeft ( sf::Vertex& vertex )
+{
+    if (vertexTilePosition(vertex).x <= 0 )
+    {
+        vertex.position = { 1, vertex.position.y };
+    }
+}
+
+//Check if the entity is at the right of the map
+void
+GravityParticles :: checkOOBRight ( sf::Vertex& vertex )
+{
+    if ( vertexTilePosition(vertex).x >= m_level.getWidth() )
+    {
+        vertex.position = { (float)Tile::TILE_SIZE * m_level.getWidth() - 1, vertex.position.y };
+    }
+}
+
+const sf::Vector2i
+GravityParticles :: vertexTilePosition ( sf::Vertex& vertex )
+{
+    int x = vertex.position.x / Tile::TILE_SIZE;
+    int y = vertex.position.y / Tile::TILE_SIZE;
+
+    return { x, y };
+}
+
