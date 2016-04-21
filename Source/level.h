@@ -35,13 +35,20 @@ class Level
         const TilePtr&
         getTileAt ( const sf::Vector2i& tilePosition ) const;
 
+        int
+        getGravity      () const;
+
+        int
+        getWidth        () const;
+
+        int
+        getHeight       () const;
+
+    private:
         void
         getScreenBounds(  int& xStart, int& yStart,
                           int& xEnd,   int& yEnd,
                           const sf::Vector2i& playerTilePos ) const;
-
-        const int
-        getGravity      () const;
 
     private:
         std::vector<TilePtr> m_tiles;

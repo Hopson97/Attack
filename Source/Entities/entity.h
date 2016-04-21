@@ -86,6 +86,22 @@ class Entity
         void
         centerSpriteOrigin      ();
 
+        void
+        checkOutOfBounds        ();
+
+    private:
+        void
+        checkOOBUp              ();
+
+        void
+        checkOOBDown            ();
+
+        void
+        checkOOBLeft            ();
+
+        void
+        checkOOBRight           ();
+
     private:
         sf::RectangleShape  m_sprite;
         sf::Vector2i        m_tilePostion;

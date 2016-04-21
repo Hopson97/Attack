@@ -92,8 +92,21 @@ Level :: getTileAt ( const sf::Vector2i& tilePosition ) const
     }
 }
 
-const int
+int
 Level :: getGravity      () const
 {
     return m_GRAVITY;
+}
+
+
+int
+Level :: getWidth        () const
+{
+    return m_mapWidth;
+}
+
+int
+Level :: getHeight       () const
+{
+    return m_mapHeight;
 }

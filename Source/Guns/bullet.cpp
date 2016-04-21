@@ -12,19 +12,21 @@ Bullet :: Bullet( const Level& level, const Game& game, const Player& player, Wi
 :   Entity ( {12,12}, player.getSpritePosition(), game.getTexture(Texture_Name::Bullet), level )
 {
 
-    //addComponent( std::make_unique<Component::Tile_Collidable>
-    //            ( *this, level ) );
+    addComponent( std::make_unique<Component::Tile_Collidable>
+                ( *this, level ) );
 
-    //addComponent( std::make_unique<Component::Effected_By_Gravity>
-    //            ( *this, level, window ) );
+    addComponent( std::make_unique<Component::Effected_By_Gravity>
+                ( *this, level, window ) );
 
     //addComponent( std::make_unique<Component::Friction>
     //            ( *this, level ) );
 
     float dx = getSpritePosition().x - targetLocation.x;
     float dy = getSpritePosition().y - targetLocation.y;
+
     float angle = Math::getRotInDeg( dx, dy );
     angle = Math::toRads( angle );
+
     float xSpeed = (float) cos ( angle ) * speed;
     float ySpeed = (float) sin ( angle ) * speed;
 

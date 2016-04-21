@@ -14,6 +14,7 @@ void
 Entity :: update ( const float dt )
 {
     updateTilePosition();
+    checkOutOfBounds();
 
     for ( auto& component : m_components )
     {
@@ -165,4 +166,55 @@ Entity :: centerSpriteOrigin ()
     sf::FloatRect r = m_sprite.getLocalBounds();
 
     m_sprite.setOrigin( r.width / 2, r.height / 2 );
+}
+
+void
+Entity :: checkOutOfBounds ()
+{
+    updateTilePosition();
+
+    checkOOBDown();
+    checkOOBUp();
+    checkOOBLeft();
+    checkOOBRight();
+}
+
+//Check if the entity is at the top of the map
+void
+Entity :: checkOOBUp ()
+{
+    if ( m_tilePostion.y <= 0 )
+    {
+        m_sprite.setPosition( m_sprite.getPosition().x, 1 );
+    }
+}
+
+//Check if the entity is at the bottom of the map
+void
+Entity :: checkOOBDown ()
+{
+    if ( m_tilePostion.y >= m_level.getHeight() )
+    {
+        m_sprite.setPosition( m_sprite.getPosition().x, Tile::TILE_SIZE * m_level.getHeight() - 1 );
+    }
+}
+
+//Check if the entity is at the left of the map
+void
+Entity :: checkOOBLeft ()
+{
+    if ( m_tilePostion.x <= 0 )
+    {
+        m_sprite.setPosition( 1, m_sprite.getPosition().y );
+    }
+}
+
+//Check if the entity is at the right of the map
+void
+Entity :: checkOOBRight ()
+{
+    if ( m_tilePostion.x >= m_level.getWidth() )
+    {
+        m_sprite.setPosition( Tile::TILE_SIZE * m_level.getWidth() - 1, m_sprite.getPosition().y );
+    }
 }
