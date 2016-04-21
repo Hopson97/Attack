@@ -1,13 +1,16 @@
 #include "test.h"
 
+#include "colours.h"
+
 namespace State
 {
 
 Test :: Test  ( Game* game )
-:   State_Base      ( game )
-,   m_level         ( game )
-,   m_player        ( m_level, *game, game->getWindow(), m_bloodDynamic )
-,   m_bloodDynamic  ( sf::Color::Red, m_level )
+:   State_Base          ( game )
+,   m_level             ( game )
+,   m_player            ( m_level, *game, game->getWindow(), m_bloodParticles )
+,   m_bloodParticles    ( sf::Color::Red, m_level )
+,   m_dirtParticles     ( Colour::Brown,  m_level )
 {
     m_game->getWindow().setViewOrigin(  m_player.getSpritePosition() );
 }
@@ -20,8 +23,11 @@ Test :: input ( const double dt )
 {
     m_player.input( dt );
 
-    m_game->getGameWindow().setView( m_camera );
+}
 
+void
+Test :: update ( const double dt )
+{
     for ( auto& bullet : m_bullets ) bullet->update( dt );
 
     for ( size_t i = 0 ; i < m_bullets.size() ; i++ )
@@ -32,8 +38,6 @@ Test :: input ( const double dt )
         }
     }
 
-
-
     if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) && bulletDelay.getElapsedTime().asSeconds() >= delay )
     {
         sf::RenderWindow& win = m_game->getGameWindow();
@@ -43,17 +47,16 @@ Test :: input ( const double dt )
 
         bulletDelay.restart();
     }
-}
 
-void
-Test :: update ( const double dt )
-{
     m_player.update( dt );
 
 
     m_game->getWindow().updateView();
 
-    m_bloodDynamic.update( dt );
+    m_bloodParticles.update( dt );
+    m_dirtParticles .update( dt );
+
+    m_game->getGameWindow().setView( m_camera );
 }
 
 void
@@ -62,7 +65,9 @@ Test :: draw( const double dt )
     sf::RenderWindow& window = m_game->getGameWindow();
     m_level.draw    ( window, m_player.getTilePosition() );
     m_player.draw   ( window );
-    m_bloodDynamic.draw( window );
+
+    m_bloodParticles.draw( window );
+    m_dirtParticles .draw( window );
 
     for ( auto& bullet : m_bullets ) bullet->draw( window );
 }

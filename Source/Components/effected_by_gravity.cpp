@@ -17,7 +17,7 @@ Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level,
 :   m_entity            ( entity )
 ,   m_level             ( level  )
 ,   m_window            ( window )
-,   m_groundParticles  ( &particles )
+,   m_groundParticles   ( &particles )
 { }
 
 Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level, Window& window, GravityParticles& particles, GravityParticles& particles2)

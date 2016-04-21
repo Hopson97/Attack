@@ -33,7 +33,7 @@ class Test : public State_Base
 
         sf::View    m_camera;
 
-        GravityParticles      m_dirtParticles
+        GravityParticles      m_dirtParticles;
         GravityParticles      m_bloodParticles;
 
         std::vector<std::unique_ptr<Bullet>> m_bullets;
