@@ -31,8 +31,6 @@ class Test : public State_Base
         Level       m_level;
         Player      m_player;
 
-        sf::View    m_camera;
-
         GravityParticles      m_dirtParticles;
         GravityParticles      m_bloodParticles;
 

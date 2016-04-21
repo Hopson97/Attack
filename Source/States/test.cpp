@@ -22,7 +22,6 @@ void
 Test :: input ( const double dt )
 {
     m_player.input( dt );
-
 }
 
 void
@@ -55,8 +54,6 @@ Test :: update ( const double dt )
 
     m_bloodParticles.update( dt );
     m_dirtParticles .update( dt );
-
-    m_game->getGameWindow().setView( m_camera );
 }
 
 void
