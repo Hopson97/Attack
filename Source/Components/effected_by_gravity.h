@@ -14,8 +14,9 @@ namespace Component
 class Effected_By_Gravity : public Component_Base
 {
     public:
-        Effected_By_Gravity( Entity& entity, const Level& level, Window& window, GravityParticles& particles );
         Effected_By_Gravity( Entity& entity, const Level& level, Window& window);
+        Effected_By_Gravity( Entity& entity, const Level& level, Window& window, GravityParticles& particles );
+        Effected_By_Gravity( Entity& entity, const Level& level, Window& window, GravityParticles& particles, GravityParticles& particles2 );
 
         void
         update          ( const float dt ) override;
@@ -27,10 +28,17 @@ class Effected_By_Gravity : public Component_Base
         void
         checkIfOnGround ( const float dt );
 
+        void
+        handleParticles ( const sf::Vector2f& newPos, const float newPosRight );
+
+        void
+        addParticles    ( GravityParticles* p, const size_t amountMultiplyer, const int fallIntensity, const sf::Vector2f& newPos, const float newPosRight );
+
         Entity&             m_entity;
         const Level&        m_level;
         Window&             m_window;
-        GravityParticles*   m_landingParticles = nullptr;
+        GravityParticles*   m_groundParticles  = nullptr;
+        GravityParticles*   m_landingParticles = nullptr; //For blood or other things, optional
 
 };
 
