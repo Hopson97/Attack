@@ -24,8 +24,6 @@ class Bullet    :   public Entity
         float       m_lifetime = 3.0f; //Lifetime after fallen to ground
         bool        m_isFallen = false;
         sf::Clock   m_eraseClock; //Clock to determine when the bullet should be deleted
-
-        sf::Vector2f directionVector;
 };
 
 #endif // BULLET_H

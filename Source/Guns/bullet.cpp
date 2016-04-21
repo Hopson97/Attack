@@ -12,8 +12,8 @@ Bullet :: Bullet( const Level& level, const Game& game, const Player& player, Wi
 :   Entity ( {12,12}, player.getSpritePosition(), game.getTexture(Texture_Name::Bullet), level )
 {
 
-    addComponent( std::make_unique<Component::Tile_Collidable>
-                ( *this, level ) );
+    //addComponent( std::make_unique<Component::Tile_Collidable>
+    //            ( *this, level ) );
 
     //addComponent( std::make_unique<Component::Effected_By_Gravity>
     //            ( *this, level, window ) );
@@ -21,19 +21,14 @@ Bullet :: Bullet( const Level& level, const Game& game, const Player& player, Wi
     //addComponent( std::make_unique<Component::Friction>
     //            ( *this, level ) );
 
-    float dx = getSpritePosition().x - targetLocation.x + (targetLocation.x/4) + 32;
-    float dy = getSpritePosition().y - targetLocation.y - (targetLocation.y/4);
+    float dx = getSpritePosition().x - targetLocation.x;
+    float dy = getSpritePosition().y - targetLocation.y;
+    float angle = Math::getRotInDeg( dx, dy );
+    angle = Math::toRads( angle );
+    float xSpeed = (float) cos ( angle ) * speed;
+    float ySpeed = (float) sin ( angle ) * speed;
 
-    sf::Vector2i mouseCoordinates = sf::Mouse::getPosition(window.get());
-    directionVector = {mouseCoordinates.x - dx, mouseCoordinates.y - dy};
-    this->setVelocity(directionVector.x / 3, directionVector.y / 3);
-
-    std::cout << "Direction Vector: " << directionVector.x << ", " << directionVector.y << std::endl;
-
-    //std::cout << "ORIG POS "    << getSpritePosition().x    << " " << getSpritePosition().y << std::endl;
-    //std::cout << "NEW POS "     << targetLocation.x         << " " << targetLocation.y      << std::endl;
-    //std::cout << "DIFF "        << getSpritePosition().x - targetLocation.x << " " << getSpritePosition().y - targetLocation.y << std::endl << std::endl;
-
+    setVelocity( xSpeed, ySpeed );
 }
 
 void
