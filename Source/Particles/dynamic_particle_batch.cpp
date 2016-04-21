@@ -12,9 +12,8 @@ GravityParticles :: addParticles ( const int count, const sf::Vector2f& location
 {
     for ( int i = 0 ; i < count ; i ++ )
     {
-        //This is so we don't have to say "-1" thus saving a function call i guess
         m_vertices.append           ( sf::Vertex( location, m_colour) );
-        m_particles.emplace_back    ( m_level, direction, m_vertices[m_vertices.getVertexCount()-1] );
+        m_particles.emplace_back    ( m_level, direction );
     }
 }
 
@@ -46,7 +45,7 @@ GravityParticles :: draw  ( sf::RenderTarget& window, sf::RenderStates states ) 
 
 ///PARTICLE METHODS AND STUFF BELOW HERE
 //Particle constructor
-GravityParticles :: Particle :: Particle ( const Level& level, const sf::Vector2f& direction, sf::Vertex& vertex )
+GravityParticles :: Particle :: Particle ( const Level& level, const sf::Vector2f& direction )
 :   m_level  ( &level )
 {
     const float dy = direction.y;

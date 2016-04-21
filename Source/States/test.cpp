@@ -12,6 +12,9 @@ Test :: Test  ( Game* game )
     m_game->getWindow().setViewOrigin(  m_player.getSpritePosition() );
 }
 
+float delay = 0.3f;
+sf::Clock bulletDelay;
+
 void
 Test :: input ( const double dt )
 {
@@ -19,11 +22,26 @@ Test :: input ( const double dt )
 
     m_game->getGameWindow().setView( m_camera );
 
-    if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
-    {
-        sf::Vector2i pos = sf::Mouse::getPosition( m_game->getGameWindow() );
+    for ( auto& bullet : m_bullets ) bullet->update( dt );
 
-        m_bullets.emplace_back( std::make_unique<Bullet>(m_level, *m_game, m_player, m_game->getWindow(), sf::Vector2f(pos.x, pos.y) ) );
+    for ( size_t i = 0 ; i < m_bullets.size() ; i++ )
+    {
+        if ( m_bullets.at( i )->isFallen() )
+        {
+            m_bullets.erase( m_bullets.begin() + i );
+        }
+    }
+
+
+
+    if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) && bulletDelay.getElapsedTime().asSeconds() >= delay )
+    {
+        sf::RenderWindow& win = m_game->getGameWindow();
+        sf::Vector2f pos = win.mapPixelToCoords ( sf::Mouse::getPosition( win ) );
+
+        m_bullets.emplace_back( std::make_unique<Bullet>(m_level, *m_game, m_player, m_game->getWindow(), pos ) );
+
+        bulletDelay.restart();
     }
 }
 

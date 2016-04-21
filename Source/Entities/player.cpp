@@ -4,6 +4,7 @@
 
 #include "tile_collidable.h"
 #include "effected_by_gravity.h"
+#include "friction.h"
 
 Player :: Player(  const Level& level, const Game& game, Window& window, GravityParticles& bloodParticles )
 :   Entity  ( { Tile::TILE_SIZE / 2, Tile::TILE_SIZE * 1.5 }, { 1000, 350 }, game.getTexture ( Texture_Name::Player ), level  )
@@ -17,6 +18,9 @@ Player :: Player(  const Level& level, const Game& game, Window& window, Gravity
 
     addComponent( std::make_unique<Component::Effected_By_Gravity>
                 ( *this, m_level, m_window, bloodParticles ) );
+
+    addComponent( std::make_unique<Component::Friction>
+                ( *this, m_level ) );
 
     //Set up animations
     const float m_time = 0.03; //Time between animation frames

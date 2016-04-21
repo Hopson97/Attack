@@ -83,6 +83,9 @@ class Entity
         void
         setTextureRect          ( const sf::IntRect& txrRect );
 
+        void
+        centerSpriteOrigin      ();
+
     private:
         sf::RectangleShape  m_sprite;
         sf::Vector2i        m_tilePostion;

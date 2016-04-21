@@ -4,24 +4,42 @@
 #include "tile_collidable.h"
 
 #include "math_funcs.h"
+#include "friction.h"
 
 #include <iostream>
 
 Bullet :: Bullet( const Level& level, const Game& game, const Player& player, Window& window, const sf::Vector2f& targetLocation )
-:   Entity ( {5,5}, player.getSpritePosition(), game.getTexture(Texture_Name::Player), level )
+:   Entity ( {50,5}, player.getSpritePosition(), game.getTexture(Texture_Name::Player), level )
 {
+
     addComponent( std::make_unique<Component::Tile_Collidable>
                 ( *this, level ) );
 
-    addComponent( std::make_unique<Component::Effected_By_Gravity>
-                ( *this, level, window ) );
+    //addComponent( std::make_unique<Component::Effected_By_Gravity>
+    //            ( *this, level, window ) );
+
+    //addComponent( std::make_unique<Component::Friction>
+    //            ( *this, level ) );
+
+    float dx = getSpritePosition().x - targetLocation.x;
+    float dy = getSpritePosition().y - targetLocation.y;
 
 
-    setVelocity( 20, 0 );
+
+    std::cout << "ORIG POS "    << getSpritePosition().x    << " " << getSpritePosition().y << std::endl;
+    std::cout << "NEW POS "     << targetLocation.x         << " " << targetLocation.y      << std::endl;
+    std::cout << "DIFF "        << getSpritePosition().x - targetLocation.x << " " << getSpritePosition().y - targetLocation.y << std::endl << std::endl;
+
 }
 
 void
 Bullet :: uniqueUpdate ( const float dt )
 {
-    moveSprite( dt );
+
+}
+
+bool
+Bullet :: isFallen    () const
+{
+    return m_eraseClock.getElapsedTime().asSeconds() >= m_lifetime;
 }

@@ -108,6 +108,8 @@
 		<Unit filename="Source/Components/component_base.h" />
 		<Unit filename="Source/Components/effected_by_gravity.cpp" />
 		<Unit filename="Source/Components/effected_by_gravity.h" />
+		<Unit filename="Source/Components/friction.cpp" />
+		<Unit filename="Source/Components/friction.h" />
 		<Unit filename="Source/Components/tile_collidable.cpp" />
 		<Unit filename="Source/Components/tile_collidable.h" />
 		<Unit filename="Source/Entities/Util/animation.cpp" />

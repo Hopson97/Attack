@@ -23,8 +23,6 @@ Entity :: update ( const float dt )
     uniqueUpdate ( dt );
     moveSprite   ( dt );
 
-    setVelocity ( getVelocity().x * 0.8, getVelocity().y );
-
     checkVelocityForZero();
 
     if ( !getVelocity().x == 0 )
@@ -159,4 +157,12 @@ void
 Entity :: setTextureRect ( const sf::IntRect& txrRect )
 {
     m_sprite.setTextureRect( txrRect );
+}
+
+void
+Entity :: centerSpriteOrigin ()
+{
+    sf::FloatRect r = m_sprite.getLocalBounds();
+
+    m_sprite.setOrigin( r.width / 2, r.height / 2 );
 }

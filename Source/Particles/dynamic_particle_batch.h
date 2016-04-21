@@ -26,7 +26,7 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
         class Particle
         {
         public:
-            Particle        ( const Level& level, const sf::Vector2f& direction, sf::Vertex& v );
+            Particle        ( const Level& level, const sf::Vector2f& direction );
 
             const bool
             onGround        ( const sf::Vertex& vertex, const float dt );

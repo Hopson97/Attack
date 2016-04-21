@@ -30,7 +30,7 @@ class Effected_By_Gravity : public Component_Base
         Entity&             m_entity;
         const Level&        m_level;
         Window&             m_window;
-        GravityParticles*   m_landingParticles;
+        GravityParticles*   m_landingParticles = nullptr;
 
 };
 

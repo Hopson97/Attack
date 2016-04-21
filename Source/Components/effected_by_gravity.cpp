@@ -55,9 +55,9 @@ Effected_By_Gravity :: applyGravity    ( const float dt )
         //If the player lands on a solid tile
         if ( tileSolid( m_level, newPos ) || tileSolid ( m_level, { newPosRight, newPos.y } ) )
         {
-            //Calculate the "intensity" of the fall, divide by big number or else it is just ridiculous
+            //Calculate the "intensity" of the fall, divide by big number or else it is just ridiculous. if it is too small then there is no point having intensity
             int fallIntensity = -m_entity.getVelocity().y / 250;
-            if ( fallIntensity > - 2 ) fallIntensity = 0;
+            if ( fallIntensity > -3 ) fallIntensity = 0;
 
             //Add particles to the landing site, if one was added into this component
             if( m_landingParticles )
