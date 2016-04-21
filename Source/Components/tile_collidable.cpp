@@ -94,7 +94,10 @@ Tile_Collidable :: addParticles ()
 {
     if ( m_dirtParticles )
     {
-        m_dirtParticles->addParticles( 25, m_entity.getSpritePosition(), m_entity.getVelocity() );
+        m_dirtParticles->addParticles(  10,
+                                       {m_entity.getSpritePosition().x + m_entity.getSpriteSize().x / 2,
+                                        m_entity.getSpritePosition().y + m_entity.getSpriteSize().y / 2 },
+                                       -m_entity.getVelocity() );
     }
 }
 

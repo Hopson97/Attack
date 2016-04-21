@@ -15,28 +15,15 @@ Test :: Test  ( Game* game )
     m_game->getWindow().setViewOrigin(  m_player.getSpritePosition() );
 }
 
-float delay = 0.3f;
+float delay = 0.0f;
 sf::Clock bulletDelay;
 
 void
 Test :: input ( const double dt )
 {
     m_player.input( dt );
-}
 
-void
-Test :: update ( const double dt )
-{
-    for ( auto& bullet : m_bullets ) bullet->update( dt );
-
-    for ( size_t i = 0 ; i < m_bullets.size() ; i++ )
-    {
-        if ( m_bullets.at( i )->isFallen() )
-        {
-            m_bullets.erase( m_bullets.begin() + i );
-        }
-    }
-
+    //Adding of the bullets
     if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) && bulletDelay.getElapsedTime().asSeconds() >= delay )
     {
         sf::RenderWindow& win = m_game->getGameWindow();
@@ -45,6 +32,20 @@ Test :: update ( const double dt )
         m_bullets.emplace_back( std::make_unique<Bullet>(m_level, *m_game, m_player, m_game->getWindow(), pos, m_dirtParticles ) );
 
         bulletDelay.restart();
+    }
+
+}
+
+void
+Test :: update ( const double dt )
+{
+    for ( size_t i = 0 ; i < m_bullets.size() ; i++ )
+    {
+        m_bullets.at( i )->update ( dt );
+        if ( m_bullets.at( i )->isFallen() )
+        {
+            m_bullets.erase( m_bullets.begin() + i );
+        }
     }
 
     m_player.update( dt );

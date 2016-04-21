@@ -28,6 +28,8 @@ GravityParticles :: update ( const float dt )
 
         v.position += p.getVelocity() * dt;
 
+        checkOutOfBounds ( v );
+
         if ( p.onGround( v, dt ) )
         {
             //m_particles.erase( m_particles.begin() + i );
