@@ -2,6 +2,8 @@
 
 #include "colours.h"
 
+#include <iostream>
+
 namespace State
 {
 
@@ -32,6 +34,10 @@ Test :: input ( const double dt )
         m_bullets.emplace_back( std::make_unique<Bullet>(m_level, *m_game, m_player, m_game->getWindow(), pos, m_dirtParticles ) );
 
         bulletDelay.restart();
+    }
+    if ( sf::Keyboard::isKeyPressed(sf::Keyboard::T ) )
+    {
+        std::cout << m_dirtParticles.size() << std::endl;
     }
 
 }

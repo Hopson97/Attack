@@ -45,6 +45,14 @@ GravityParticles :: draw  ( sf::RenderTarget& window, sf::RenderStates states ) 
     window.draw(m_vertices, states);
 }
 
+size_t
+GravityParticles :: size () const
+{
+    return m_vertices.getVertexCount();
+}
+
+
+
 ///PARTICLE METHODS AND STUFF BELOW HERE
 //Particle constructor
 GravityParticles :: Particle :: Particle ( const Level& level, const sf::Vector2f& direction )

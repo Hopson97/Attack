@@ -21,6 +21,10 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
         void
         draw                ( sf::RenderTarget& window, sf::RenderStates states = sf::RenderStates::Default ) const override;
 
+        size_t
+        size                () const;
+
+
     private:
         void
         checkOutOfBounds        ( sf::Vertex& vertex );
@@ -45,7 +49,7 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
         class Particle
         {
         public:
-            Particle        ( const Level& level, const sf::Vector2f& direction );
+            Particle        ( const Level& level, const sf::Vector2f& direction);
 
             const bool
             onGround        ( const sf::Vertex& vertex, const float dt );
@@ -57,8 +61,8 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
             const bool
             isOnSolidTile   ( const sf::Vertex& vertex );
 
-            const Level* m_level;
-            sf::Vector2f m_velocity;
+            const Level*    m_level;
+            sf::Vector2f    m_velocity;
         };
         sf::VertexArray         m_vertices;
         sf::Color               m_colour;

@@ -94,10 +94,13 @@ Tile_Collidable :: addParticles ()
 {
     if ( m_dirtParticles )
     {
-        m_dirtParticles->addParticles(  10,
+        m_dirtParticles->addParticles(  5,
                                        {m_entity.getSpritePosition().x + m_entity.getSpriteSize().x / 2,
                                         m_entity.getSpritePosition().y + m_entity.getSpriteSize().y / 2 },
-                                       -m_entity.getVelocity() );
+                                       {-m_entity.getVelocity().x,
+                                       ( m_entity.getVelocity().y > 0) ? //The particles always go up :P
+                                        -m_entity.getVelocity().y / 10 :
+                                         m_entity.getVelocity().y / 10 } );
     }
 }
 

@@ -1,8 +1,8 @@
 #include "game.h"
 
 #include "States/test.h"
-
 #include "fps_counter.h"
+#include "colours.h"
 
 Game :: Game ()
 {
@@ -18,7 +18,7 @@ Game :: runLoop ()
 
     FPS_Counter fps_counter;
 
-    m_music.playSong( Music_Name::Hell_March );
+    //m_music.playSong( Music_Name::Hell_March );
 
     while ( m_window.isOpen() )
     {
@@ -26,7 +26,7 @@ Game :: runLoop ()
         {
             double dt = calculateDeltaTime( dtClock );
 
-            m_window.clear( );
+            m_window.clear( Colour::Sky );
 
             m_states.peekState()->input ( dt );
             m_states.peekState()->update( dt );

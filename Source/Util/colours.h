@@ -1,10 +1,12 @@
 #ifndef COLOURS_H_INCLUDED
 #define COLOURS_H_INCLUDED
 
+#include <SFML/Graphics.hpp>
 
 namespace Colour
 {
-        sf::Color Brown ( 139, 69, 19 );
+        extern sf::Color Brown;
+        extern sf::Color Sky;
 }
 
 

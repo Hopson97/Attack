@@ -79,8 +79,10 @@ Effected_By_Gravity :: handleParticles ( const sf::Vector2f& newPos, const float
     int fallIntensity = -m_entity.getVelocity().y / 250;
     if ( fallIntensity > -3 ) fallIntensity = 0;
 
-    addParticles( m_groundParticles,  20, fallIntensity, newPos, newPosRight );
-    addParticles( m_landingParticles, 10, fallIntensity, newPos, newPosRight );
+    std::cout << fallIntensity << std::endl;
+
+    addParticles( m_groundParticles,  8, fallIntensity, newPos, newPosRight );
+    addParticles( m_landingParticles, 5, fallIntensity, newPos, newPosRight );
 
     //Shake the screen
     m_window.turnOnShake( fallIntensity, 0.1 );

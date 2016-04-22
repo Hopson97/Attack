@@ -28,6 +28,7 @@
 					<Add directory="Source/Components/Funcs" />
 					<Add directory="Source/Entities/Util" />
 					<Add directory="Source/Guns" />
+					<Add directory="Source/Functions" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32s" />
@@ -74,6 +75,7 @@
 					<Add directory="Source/Components/Funcs" />
 					<Add directory="Source/Entities/Util" />
 					<Add directory="Source/Guns" />
+					<Add directory="Source/Functions" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -118,6 +120,8 @@
 		<Unit filename="Source/Entities/entity.h" />
 		<Unit filename="Source/Entities/player.cpp" />
 		<Unit filename="Source/Entities/player.h" />
+		<Unit filename="Source/Functions/out_of_bounds_checks.cpp" />
+		<Unit filename="Source/Functions/out_of_bounds_checks.h" />
 		<Unit filename="Source/Guns/bullet.cpp" />
 		<Unit filename="Source/Guns/bullet.h" />
 		<Unit filename="Source/Managers/font_m.cpp" />
@@ -149,6 +153,7 @@
 		<Unit filename="Source/Tiles/grass.h" />
 		<Unit filename="Source/Tiles/tile.cpp" />
 		<Unit filename="Source/Tiles/tile.h" />
+		<Unit filename="Source/Util/colours.cpp" />
 		<Unit filename="Source/Util/colours.h" />
 		<Unit filename="Source/Util/fps_counter.cpp" />
 		<Unit filename="Source/Util/fps_counter.h" />
