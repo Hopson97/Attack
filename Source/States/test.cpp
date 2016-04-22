@@ -16,10 +16,10 @@ Test :: Test  ( Game* game )
 {
     //Set the games view that the cameras centre is just below the player
     m_game->getWindow().setViewOrigin(  m_player.getSpritePosition() );
-    m_game->getWindow().setViewOffset( 0, -m_player.getSpriteSize().y * 1.1 );
+    m_game->getWindow().setViewOffset( 0, -m_player.getSpriteSize().y );
 }
 
-float delay = 0.0f;
+float delay = 0.08f;
 sf::Clock bulletDelay;
 
 void

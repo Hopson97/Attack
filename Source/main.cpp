@@ -2,6 +2,7 @@
 
 #include "rand.h"
 #include <iostream>
+#include <SFML/Audio/Sound.hpp>
 
 /**
 

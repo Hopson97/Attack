@@ -6,7 +6,7 @@
 
 enum class Sound_Name
 {
-
+    Bullet_Generic
 };
 
 namespace Manager

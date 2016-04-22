@@ -50,6 +50,4 @@ bool
 Bullet :: isFallen    () const
 {
     return ( getVelocity().x == 0 || getVelocity().y == 0 );
-
-    return m_eraseClock.getElapsedTime().asSeconds() >= m_lifetime;
 }
