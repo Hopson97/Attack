@@ -31,8 +31,8 @@ class Test : public State_Base
         Level       m_level;
         Player      m_player;
 
-        GravityParticles      m_dirtParticles;
         GravityParticles      m_bloodParticles;
+        GravityParticles      m_dirtParticles;
 
         std::vector<std::unique_ptr<Bullet>> m_bullets;
 };

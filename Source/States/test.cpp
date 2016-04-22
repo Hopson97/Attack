@@ -35,11 +35,6 @@ Test :: input ( const double dt )
 
         bulletDelay.restart();
     }
-    if ( sf::Keyboard::isKeyPressed(sf::Keyboard::T ) )
-    {
-        std::cout << m_dirtParticles.size() << std::endl;
-    }
-
 }
 
 void

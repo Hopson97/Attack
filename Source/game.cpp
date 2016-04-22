@@ -18,7 +18,7 @@ Game :: runLoop ()
 
     FPS_Counter fps_counter;
 
-    //m_music.playSong( Music_Name::Hell_March );
+    m_music.playSong( Music_Name::Hell_March );
 
     while ( m_window.isOpen() )
     {

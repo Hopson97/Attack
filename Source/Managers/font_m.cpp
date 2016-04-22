@@ -30,8 +30,6 @@ Font_M :: loadFont ( const Font_Name name, const std::string& path )
     {
         std::runtime_error ( "Font at " + path + " does not exist." );
     }
-
-    std::cout << "Font loaded at " + path << std::endl;
 }
 
 // Returns a const font based on the font name passed in.

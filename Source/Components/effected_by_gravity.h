@@ -38,8 +38,8 @@ class Effected_By_Gravity : public Component_Base
         const Level&        m_level;
         Window&             m_window;
 
-        GravityParticles*   m_landingParticles = nullptr; //For blood or other things, optional
         GravityParticles*   m_groundParticles  = nullptr;
+        GravityParticles*   m_landingParticles = nullptr; //For blood or other things, optional
 };
 
 } //Namespace Component

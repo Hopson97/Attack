@@ -36,11 +36,13 @@ Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, W
 void
 Bullet :: uniqueUpdate ( const float dt )
 {
-    this->moveSprite(dt);
+
 }
 
 bool
 Bullet :: isFallen    () const
 {
+    return ( getVelocity().x == 0 || getVelocity().y == 0 );
+
     return m_eraseClock.getElapsedTime().asSeconds() >= m_lifetime;
 }

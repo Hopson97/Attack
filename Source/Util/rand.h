@@ -7,7 +7,11 @@
 namespace random
 {
 
-int num(int low, int high);
+float
+numf    (float low, float high);
+
+int
+num     (int low, int high);
 
 }
 
