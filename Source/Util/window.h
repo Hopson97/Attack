@@ -36,7 +36,10 @@ class Window
         updateView  ();
 
         void
-        setViewOrigin ( const sf::Vector2f& viewLoc );
+        setViewOrigin   ( const sf::Vector2f& viewLoc );
+
+        void
+        setViewOffset   ( const float x, const float y );
 
     private:
         void
@@ -51,6 +54,7 @@ class Window
         float                   m_shakeTime         = 0;
         int                     m_shakeIntensity    = 0;
         const sf::Vector2f*     m_viewOrigin;
+        sf::Vector2f            m_viewOffset;
 };
 
 #endif // WINDOW_H

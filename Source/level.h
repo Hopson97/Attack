@@ -51,14 +51,16 @@ class Level
                           const sf::Vector2i& playerTilePos ) const;
 
     private:
-        std::vector<TilePtr> m_tiles;
+        std::vector<TilePtr>        m_tiles;
 
         std::map<Model, Tile_Model> m_models;
 
-        int m_mapHeight;
-        int m_mapWidth;
+        TilePtr                     m_errorTile; //If all else fails, the "get tile" methods returns an air tile if the entity somehow gets out of bounds :/
 
-        constexpr static int m_GRAVITY = 2000;
+        int                         m_mapHeight;
+        int                         m_mapWidth;
+
+        constexpr static int        m_GRAVITY = 2000;
 };
 
 #endif // LEVEL_H

@@ -12,7 +12,7 @@ Window :: Window()
                       "Window",
                       sf::Style::Default,
                       sf::ContextSettings(24) );
-   // m_window.setFramerateLimit ( 144 );
+   //v m_window.setFramerateLimit ( 144 );
     m_window.setPosition ( { 0, 0 } );
 
 
@@ -61,10 +61,11 @@ Window :: updateView  ()
     {
         throw std::runtime_error ( "The cameras view has not been set!" );
     }
+
     const int shake = m_shakeIntensity; //Short hand
 
     //Center the view (presume at player?)
-    m_view.setCenter( *m_viewOrigin );
+    m_view.setCenter( *m_viewOrigin + m_viewOffset );
 
     //Shakes the camera if the intensity is > 0
     m_view.move( random::num ( -shake, shake ),
@@ -89,6 +90,12 @@ void
 Window :: setViewOrigin ( const sf::Vector2f& viewLoc )
 {
     m_viewOrigin = &viewLoc;
+}
+
+void
+Window :: setViewOffset   ( const float x, const float y )
+{
+    m_viewOffset = { x, y };
 }
 
 void

@@ -21,7 +21,7 @@ class Bullet    :   public Entity
         void
         uniqueUpdate ( const float dt ) override;
 
-        const int   speed = 1450;
+        const int   speed = 1500;
 
         float       m_lifetime = 3.0f; //Lifetime after fallen to ground
         bool        m_isFallen = false;

@@ -4,6 +4,7 @@
 #include "tile_info.h"
 
 #include <string>
+#include <iostream>
 
 typedef std::unique_ptr<Tile::Tile_Base>  TilePtr;
 
@@ -15,6 +16,8 @@ Level :: Level( const Game* game )
     Map_Loader loader;
 
     loader.loadMap( this, "Res/Maps/test.helimap", m_models );
+
+    m_errorTile = std::make_unique<Tile::Air>( -1, -1 );
 }
 
 void
@@ -74,6 +77,7 @@ Level :: getTileAt ( const sf::Vector2i& tilePosition ) const
 {
     if ( (unsigned)tilePosition.y * m_mapWidth + tilePosition.x > m_tiles.size() - 1 )
     {
+        /*
         std::string xLoc = std::to_string( tilePosition.x );
         std::string yLoc = std::to_string( tilePosition.y );
 
@@ -84,7 +88,9 @@ Level :: getTileAt ( const sf::Vector2i& tilePosition ) const
 
         std::string coordsMax = "(" + xLocMax + "," + yLocMax + ")";
 
-        throw std::runtime_error ( "Tried to access the Tile at: " + coords + ", where the maximum size is " + coordsMax + ".");
+        std::cout << "Tried to access the Tile at: " + coords + ", where the maximum size is " + coordsMax + "." << std::endl;
+        */
+        return m_errorTile;
     }
     else
     {

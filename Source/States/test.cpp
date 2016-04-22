@@ -14,7 +14,9 @@ Test :: Test  ( Game* game )
 ,   m_bloodParticles    ( sf::Color::Red, m_level )
 ,   m_dirtParticles     ( Colour::Brown,  m_level )
 {
+    //Set the games view that the cameras centre is just below the player
     m_game->getWindow().setViewOrigin(  m_player.getSpritePosition() );
+    m_game->getWindow().setViewOffset( 0, -m_player.getSpriteSize().y * 1.1 );
 }
 
 float delay = 0.0f;

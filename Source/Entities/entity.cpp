@@ -14,12 +14,13 @@ void
 Entity :: update ( const float dt )
 {
     updateTilePosition();
-    checkOutOfBounds();
 
     for ( auto& component : m_components )
     {
+        checkOutOfBounds();
         component->update ( dt );
     }
+    checkOutOfBounds();
 
     uniqueUpdate ( dt );
     moveSprite   ( dt );
@@ -173,20 +174,12 @@ Entity :: checkOutOfBounds ()
 {
     updateTilePosition();
 
+    //We don't check for up because bullets falling is cool
     checkOOBDown();
-    checkOOBUp();
     checkOOBLeft();
     checkOOBRight();
-}
 
-//Check if the entity is at the top of the map
-void
-Entity :: checkOOBUp ()
-{
-    if ( m_tilePostion.y <= 0 )
-    {
-        m_sprite.setPosition( m_sprite.getPosition().x, 1 );
-    }
+    updateTilePosition();
 }
 
 //Check if the entity is at the bottom of the map
@@ -195,6 +188,7 @@ Entity :: checkOOBDown ()
 {
     if ( m_tilePostion.y >= m_level.getHeight() )
     {
+        m_velocity.y = -1;
         m_sprite.setPosition( m_sprite.getPosition().x, Tile::TILE_SIZE * m_level.getHeight() - 1 );
     }
 }
@@ -205,7 +199,8 @@ Entity :: checkOOBLeft ()
 {
     if ( m_tilePostion.x <= 0 )
     {
-        m_sprite.setPosition( 1, m_sprite.getPosition().y );
+        m_velocity.x = 1;
+        m_sprite.setPosition( Tile::TILE_SIZE, m_sprite.getPosition().y );
     }
 }
 
@@ -215,6 +210,7 @@ Entity :: checkOOBRight ()
 {
     if ( m_tilePostion.x >= m_level.getWidth() )
     {
+        m_velocity.x = -1;
         m_sprite.setPosition( Tile::TILE_SIZE * m_level.getWidth() - 1, m_sprite.getPosition().y );
     }
 }

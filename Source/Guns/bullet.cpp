@@ -6,6 +6,8 @@
 #include "math_funcs.h"
 #include "friction.h"
 
+#include "rand.h"
+
 #include <iostream>
 
 Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, Window& window, const sf::Vector2f& targetLocation, GravityParticles& particles )
@@ -29,6 +31,11 @@ Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, W
 
     float xSpeed = (float) cos ( angle ) * speed;
     float ySpeed = (float) sin ( angle ) * speed;
+
+    int randDirRange = 50;
+
+    xSpeed = random::numf( xSpeed - randDirRange, xSpeed + randDirRange );
+    ySpeed = random::numf( ySpeed - randDirRange, ySpeed + randDirRange );
 
     setVelocity( xSpeed, ySpeed );
 }
