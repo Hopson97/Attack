@@ -90,7 +90,6 @@ Gravity_Particles :: checkForResize ()
         m_vertices = newV;
         m_particles = newP;
 
-        std::cout << "resizing" << std::endl;
         m_vertices.resize   ( reduceTo );
         m_particles.resize  ( reduceTo, m_particles.at( maxSize - 1 ) );
     }

@@ -7,6 +7,8 @@ namespace Colour
 {
         extern sf::Color Brown;
         extern sf::Color Sky;
+        extern sf::Color Orange;
+        extern sf::Color DarkGreen;
 }
 
 

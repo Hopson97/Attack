@@ -15,7 +15,7 @@ Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, W
 {
 
     addComponent( std::make_unique<Component::Tile_Collidable>
-                ( *this, level, &particles ) );
+                ( *this, level, &particles, false, false ) );
 
     addComponent( std::make_unique<Component::Effected_By_Gravity>
                 ( *this, level, window, particles ) );

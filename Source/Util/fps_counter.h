@@ -10,17 +10,23 @@
 class FPS_Counter
 {
     public:
-        FPS_Counter( const Game& game, const Window& window );
+        FPS_Counter     ( const Game& game, const Window& window );
 
         void
-        update ();
+        update          ();
 
         void
-        draw    ( sf::RenderWindow& window );
+        draw            ( sf::RenderWindow& window );
 
     private:
         float
-        getFPS( const sf::Time& time );
+        getFPS          ( const sf::Time& time );
+
+        void
+        updateText      ();
+
+        void
+        updateColour    ( const float fps );
 
     private:
         sf::Clock fpsClock;

@@ -14,7 +14,13 @@ namespace Component
 class Tile_Collidable : public Component_Base
 {
     public:
-        Tile_Collidable( Entity& enity, const Level& level, Gravity_Particles* dirt = nullptr );
+        Tile_Collidable ( Entity& entity, const Level& level, Gravity_Particles* dirt,
+                         const bool collideDown, const bool bounceOnCollide );
+
+        Tile_Collidable ( Entity& entity, const Level& level, const bool collideDown,
+                         const bool bounceOnCollide);
+
+        Tile_Collidable ( Entity& enity, const Level& level, Gravity_Particles* dirt = nullptr );
 
         void
         update ( const float dt ) override;
@@ -30,6 +36,9 @@ class Tile_Collidable : public Component_Base
         checkUpCollide      ( const float dt );
 
         void
+        checkDownCollide    ( const float dt );
+
+        void
         checkXTile          ( const sf::Vector2f& newPos );
 
         void
@@ -41,6 +50,9 @@ class Tile_Collidable : public Component_Base
     private:
         Entity&         m_entity;
         const Level&    m_level;
+
+        const bool      m_isCollideDown     =   false;
+        const bool      m_isBounceOnCollide =   false;
 
         Gravity_Particles*   m_dirtParticles;
 };

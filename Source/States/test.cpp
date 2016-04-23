@@ -19,7 +19,7 @@ Test :: Test  ( Game* game )
     m_game->getWindow().setViewOffset( 0, -m_player.getSpriteSize().y );
 }
 
-float delay = 0.08f;
+float delay = 0.00f;
 sf::Clock bulletDelay;
 
 void
@@ -57,7 +57,6 @@ Test :: update ( const double dt )
     }
 
     m_player.update( dt );
-
 
     m_game->getWindow().updateView();
     if ( m_isParticlesOn )
