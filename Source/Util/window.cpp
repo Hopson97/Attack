@@ -13,6 +13,8 @@ Window :: Window()
                       sf::Style::Default,
                       sf::ContextSettings(24) );
 
+    //m_window.setFramerateLimit( 10 );
+
     m_window.setPosition ( { 0, 0 } );
 
 

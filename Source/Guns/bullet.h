@@ -21,7 +21,7 @@ class Bullet    :   public Entity
         void
         uniqueUpdate ( const float dt ) override;
 
-        const int   speed = 1700;
+        const int m_speed = 2000;
 
         bool        m_isFallen = false;
         sf::Clock   m_eraseClock; //Clock to determine when the bullet should be deleted
