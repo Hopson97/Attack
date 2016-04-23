@@ -16,7 +16,7 @@ Game :: runLoop ()
     sf::Clock dtClock;
     dtClock.restart();
 
-    FPS_Counter fps_counter;
+    FPS_Counter fps_counter ( *this, m_window );
 
     m_music.playSong( Music_Name::Hell_March );
 
@@ -33,6 +33,7 @@ Game :: runLoop ()
             m_states.peekState()->draw  ( dt );
 
             fps_counter.update();
+            fps_counter.draw( m_window.get() );
 
             m_window.update();
         }

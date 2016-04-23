@@ -4,11 +4,19 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "window.h"
+#include "game.h"
+
 class FPS_Counter
 {
     public:
+        FPS_Counter( const Game& game, const Window& window );
+
         void
         update ();
+
+        void
+        draw    ( sf::RenderWindow& window );
 
     private:
         float
@@ -17,11 +25,13 @@ class FPS_Counter
     private:
         sf::Clock fpsClock;
         sf::Clock fpsClock2;
+
         int     fpsCount  = 0;
         float   frameTimes  = 0;
 
-        int     frameCount      = 0;
-        float   frameTimes10    = 0; //Shows average FPS every 10 secs
+        sf::Text m_text;
+
+        const   Window& m_window;
 };
 
 #endif // FPS_COUNTER_H

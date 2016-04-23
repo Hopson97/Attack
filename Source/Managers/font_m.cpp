@@ -28,7 +28,7 @@ Font_M :: loadFont ( const Font_Name name, const std::string& path )
 {
     if ( !m_fonts[ name ].loadFromFile( path ) )
     {
-        std::runtime_error ( "Font at " + path + " does not exist." );
+        throw std::runtime_error ( "Font at " + path + " does not exist." );
     }
 }
 

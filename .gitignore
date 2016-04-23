@@ -3,6 +3,7 @@
 ##################
 *.layout
 *.depend
+*.cbp
 
 bin/
 obj/

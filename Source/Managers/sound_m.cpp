@@ -27,7 +27,7 @@ Sound_M :: loadSound ( const Sound_Name name, const std::string& filePath )
 {
     if ( !m_sounds[ name ].loadFromFile( filePath ) )
     {
-        std::runtime_error ( "Sound at " + filePath + " does not exist." );
+        throw std::runtime_error ( "Sound at " + filePath + " does not exist." );
     }
 }
 

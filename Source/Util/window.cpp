@@ -12,7 +12,7 @@ Window :: Window()
                       "Window",
                       sf::Style::Default,
                       sf::ContextSettings(24) );
-   //v m_window.setFramerateLimit ( 144 );
+
     m_window.setPosition ( { 0, 0 } );
 
 
@@ -24,6 +24,19 @@ sf::RenderWindow&
 Window :: get()
 {
     return m_window;
+}
+
+
+const sf::Vector2f&
+Window :: getCenter   () const
+{
+    return m_view.getCenter();
+}
+
+const sf::Vector2u
+Window :: getSize   () const
+{
+    return m_window.getSize();
 }
 
 void
@@ -39,8 +52,8 @@ Window :: update ()
     winEvents();
 }
 
-const bool
-Window :: isOpen ()
+bool
+Window :: isOpen () const
 {
     return m_window.isOpen();
 }

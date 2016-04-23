@@ -23,8 +23,14 @@ class Window
         void
         update      ();
 
-        const bool
-        isOpen      ();
+        bool
+        isOpen      () const;
+
+        const sf::Vector2f&
+        getCenter   () const;
+
+        const sf::Vector2u
+        getSize   () const;
 
         void
         close       ();
