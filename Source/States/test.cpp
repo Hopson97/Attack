@@ -37,6 +37,11 @@ Test :: input ( const double dt )
 
         bulletDelay.restart();
     }
+
+    if ( sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+    {
+        m_isParticlesOn = m_isParticlesOn ? false : true;
+    }
 }
 
 void
@@ -55,9 +60,11 @@ Test :: update ( const double dt )
 
 
     m_game->getWindow().updateView();
-
-    m_bloodParticles.update( dt );
-    m_dirtParticles .update( dt );
+    if ( m_isParticlesOn )
+    {
+        m_bloodParticles.update( dt );
+        m_dirtParticles .update( dt );
+    }
 }
 
 void
@@ -67,8 +74,11 @@ Test :: draw( const double dt )
     m_level.draw    ( window, m_player.getTilePosition() );
     m_player.draw   ( window );
 
-    m_bloodParticles.draw( window );
-    m_dirtParticles .draw( window );
+    if ( m_isParticlesOn )
+    {
+        m_bloodParticles.draw( window );
+        m_dirtParticles .draw( window );
+    }
 
     for ( auto& bullet : m_bullets ) bullet->draw( window );
 }

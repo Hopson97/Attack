@@ -7,7 +7,7 @@
 #include "level.h"
 #include "rand.h"
 
-class GravityParticles : public sf::Drawable, public sf::Transformable
+class GravityParticles  :   public sf::Drawable, public sf::Transformable
 {
     public:
         GravityParticles( const sf::Color& colour, const Level& level );
@@ -43,6 +43,9 @@ class GravityParticles : public sf::Drawable, public sf::Transformable
 
         const sf::Vector2i
         vertexTilePosition      ( sf::Vertex& vertex );
+
+        void
+        checkForResize          ();
 
     private:
         //Particle class

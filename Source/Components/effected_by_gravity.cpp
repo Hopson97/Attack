@@ -95,7 +95,7 @@ Effected_By_Gravity :: addParticles ( GravityParticles* p, const size_t amountMu
         p->addParticles( abs ( fallIntensity * amountMultiplyer ),      //Particles added is proportinal to the fall intensity
                         { ( newPos.x + newPosRight ) / 2                //X position, between the 2 bottom edge vertex of entity,
                         ,   newPos.y - m_entity.getSpriteSize().y / 5}, //Y position -size... so particles don't insta stuck in the ground
-                        {0, (float)fallIntensity }                      //Direction
+                        {0, (float)fallIntensity}                      //Direction
                        );
     }
 }

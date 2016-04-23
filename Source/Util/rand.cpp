@@ -12,6 +12,8 @@ numf ( float low, float high)
     int l = low;
     int h = high;   //Because we need integers for operator %
 
+    if ( l > h ) l = h - 1;
+
     float n = rand() % (h - l + 1) + l;
 
     return n / 100.0f;

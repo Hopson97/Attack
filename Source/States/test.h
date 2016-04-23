@@ -35,6 +35,8 @@ class Test : public State_Base
         GravityParticles      m_dirtParticles;
 
         std::vector<std::unique_ptr<Bullet>> m_bullets;
+
+        bool                m_isParticlesOn = true;
 };
 
 }

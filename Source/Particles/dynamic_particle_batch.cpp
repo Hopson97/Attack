@@ -10,6 +10,8 @@ GravityParticles :: GravityParticles( const sf::Color& colour, const Level& leve
 void
 GravityParticles :: addParticles ( const int count, const sf::Vector2f& location, const sf::Vector2f& direction )
 {
+    checkForResize();
+
     for ( int i = 0 ; i < count ; i ++ )
     {
         m_vertices.append           ( sf::Vertex( location, m_colour) );
@@ -20,6 +22,7 @@ GravityParticles :: addParticles ( const int count, const sf::Vector2f& location
 void
 GravityParticles :: update ( const float dt )
 {
+
     for ( size_t i = 0 ; i < m_particles.size() ; i++ )
     {
         //Get the vertex and particle at i index for shorthand
@@ -41,8 +44,12 @@ void
 GravityParticles :: draw  ( sf::RenderTarget& window, sf::RenderStates states ) const
 {
     states.transform *= getTransform();
+
+    // our particles don't use a texture
     states.texture = NULL;
-    window.draw(m_vertices, states);
+
+    // draw the vertex array
+    window.draw(m_vertices, states );
 }
 
 size_t
@@ -51,7 +58,44 @@ GravityParticles :: size () const
     return m_vertices.getVertexCount();
 }
 
+//Checks for the size of the particle arrays
+//It then copies the arrays back-front, and then resizes them
+//From the users perspective, they are removed from the FRONT
+void
+GravityParticles :: checkForResize ()
+{
+    static constexpr size_t maxSize = 40000;
+    static constexpr size_t reduceTo = 35000;
 
+    if ( m_vertices.getVertexCount() > maxSize )
+    {
+        sf::VertexArray newV;
+        std::vector<Particle> newP;
+
+        for ( int v = m_vertices.getVertexCount() ; v != 0 ; v-- )
+        {
+            newV.append( m_vertices[ v ] );
+        }
+
+        for ( int p = m_particles.size() ; p != 0 ; p-- )
+        {
+            try {
+                newP.push_back( m_particles.at( p ) );
+            }
+            catch ( std::out_of_range )
+            {
+
+            }
+        }
+
+        m_vertices = newV;
+        m_particles = newP;
+
+        std::cout << "resizing" << std::endl;
+        m_vertices.resize   ( reduceTo );
+        m_particles.resize  ( reduceTo, m_particles.at( maxSize - 1 ) );
+    }
+}
 
 ///PARTICLE METHODS AND STUFF BELOW HERE
 //Particle constructor

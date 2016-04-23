@@ -20,9 +20,6 @@ Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, W
     addComponent( std::make_unique<Component::Effected_By_Gravity>
                 ( *this, level, window, particles ) );
 
-    //addComponent( std::make_unique<Component::Friction>
-    //            ( *this, level ) );
-
     float dx = getSpritePosition().x - targetLocation.x;
     float dy = getSpritePosition().y - targetLocation.y;
 
