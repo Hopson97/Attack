@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, Window& window, const sf::Vector2f& targetLocation, GravityParticles& particles )
+Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, Window& window, const sf::Vector2f& targetLocation, Gravity_Particles& particles )
 :   Entity ( {12,12}, player.getSpritePosition(), game.getTexture(Texture_Name::Bullet), level )
 {
 

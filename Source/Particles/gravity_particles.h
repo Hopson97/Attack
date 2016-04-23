@@ -1,5 +1,5 @@
-#ifndef DYNAMIC_PARTICLE_BATCH_H
-#define DYNAMIC_PARTICLE_BATCH_H
+#ifndef GRAVITY_PARTICLES_H
+#define GRAVITY_PARTICLES_H
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -7,10 +7,11 @@
 #include "level.h"
 #include "rand.h"
 
-class GravityParticles  :   public sf::Drawable, public sf::Transformable
+
+class Gravity_Particles  :   public sf::Drawable, public sf::Transformable
 {
     public:
-        GravityParticles( const sf::Color& colour, const Level& level );
+        Gravity_Particles( const sf::Color& colour, const Level& level );
 
         void
         addParticles        ( const int count, const sf::Vector2f& location, const sf::Vector2f& direction );
@@ -74,4 +75,4 @@ class GravityParticles  :   public sf::Drawable, public sf::Transformable
         const Level&            m_level;
 };
 
-#endif // DYNAMIC_PARTICLE_BATCH_H
+#endif // GRAVITY_PARTICLES_H

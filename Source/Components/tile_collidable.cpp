@@ -7,7 +7,7 @@
 namespace Component
 {
 
-Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level, GravityParticles* dirt )
+Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level, Gravity_Particles* dirt )
 :   m_entity        ( entity )
 ,   m_level         ( level )
 ,   m_dirtParticles ( dirt )

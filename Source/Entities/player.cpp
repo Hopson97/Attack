@@ -6,7 +6,7 @@
 #include "effected_by_gravity.h"
 #include "friction.h"
 
-Player :: Player(  const Level& level, const Game& game, Window& window, GravityParticles& bloodParticles )
+Player :: Player(  const Level& level, const Game& game, Window& window, Gravity_Particles& bloodParticles )
 :   Entity  ( { Tile::TILE_SIZE / 2, Tile::TILE_SIZE * 1.5 }, { 1000, 350 }, game.getTexture ( Texture_Name::Player ), level  )
 ,   m_level     ( level )
 ,   m_window    ( window )

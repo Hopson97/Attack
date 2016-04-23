@@ -6,7 +6,7 @@
 #include "player.h"
 #include "bullet.h"
 
-#include "Particles/dynamic_particle_batch.h"
+#include "Particles/gravity_particles.h"
 
 namespace State
 {
@@ -31,8 +31,8 @@ class Test : public State_Base
         Level       m_level;
         Player      m_player;
 
-        GravityParticles      m_bloodParticles;
-        GravityParticles      m_dirtParticles;
+        Gravity_Particles      m_bloodParticles;
+        Gravity_Particles      m_dirtParticles;
 
         std::vector<std::unique_ptr<Bullet>> m_bullets;
 

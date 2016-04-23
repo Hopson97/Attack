@@ -13,14 +13,14 @@ namespace Component
 ,   m_window            ( window )
 { }
 
-Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level, Window& window, GravityParticles& particles )
+Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level, Window& window, Gravity_Particles& particles )
 :   m_entity            ( entity )
 ,   m_level             ( level  )
 ,   m_window            ( window )
 ,   m_groundParticles   ( &particles )
 { }
 
-Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level, Window& window, GravityParticles& particles, GravityParticles& particles2)
+Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level, Window& window, Gravity_Particles& particles, Gravity_Particles& particles2)
 :   m_entity                ( entity )
 ,   m_level                 ( level  )
 ,   m_window                ( window )
@@ -87,7 +87,7 @@ Effected_By_Gravity :: handleParticles ( const sf::Vector2f& newPos, const float
 }
 
 void
-Effected_By_Gravity :: addParticles ( GravityParticles* p, const size_t amountMultiplyer, const int fallIntensity, const sf::Vector2f& newPos, const float newPosRight )
+Effected_By_Gravity :: addParticles ( Gravity_Particles* p, const size_t amountMultiplyer, const int fallIntensity, const sf::Vector2f& newPos, const float newPosRight )
 {
     //Add particles to the landing site, if one was added into this component
     if ( p )

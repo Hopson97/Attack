@@ -132,10 +132,9 @@
 		<Unit filename="Source/Managers/sound_m.h" />
 		<Unit filename="Source/Managers/texture_m.cpp" />
 		<Unit filename="Source/Managers/texture_m.h" />
-		<Unit filename="Source/Particles/dynamic_particle_batch.cpp" />
-		<Unit filename="Source/Particles/dynamic_particle_batch.h" />
-		<Unit filename="Source/Particles/static_particle_batch.cpp" />
-		<Unit filename="Source/Particles/static_particle_batch.h" />
+		<Unit filename="Source/Particles/gravity_particle.cpp" />
+		<Unit filename="Source/Particles/gravity_particles.cpp" />
+		<Unit filename="Source/Particles/gravity_particles.h" />
 		<Unit filename="Source/States/handler.cpp" />
 		<Unit filename="Source/States/handler.h" />
 		<Unit filename="Source/States/state_base.cpp" />

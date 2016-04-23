@@ -4,7 +4,7 @@
 #include "entity.h"
 #include "level.h"
 #include "window.h"
-#include "Particles/dynamic_particle_batch.h"
+#include "Particles/gravity_particles.h"
 
 #include "component_base.h"
 
@@ -15,8 +15,8 @@ class Effected_By_Gravity : public Component_Base
 {
     public:
         Effected_By_Gravity( Entity& entity, const Level& level, Window& window);
-        Effected_By_Gravity( Entity& entity, const Level& level, Window& window, GravityParticles& particles );
-        Effected_By_Gravity( Entity& entity, const Level& level, Window& window, GravityParticles& particles, GravityParticles& particles2 );
+        Effected_By_Gravity( Entity& entity, const Level& level, Window& window, Gravity_Particles& particles );
+        Effected_By_Gravity( Entity& entity, const Level& level, Window& window, Gravity_Particles& particles, Gravity_Particles& particles2 );
 
         void
         update          ( const float dt ) override;
@@ -32,14 +32,14 @@ class Effected_By_Gravity : public Component_Base
         handleParticles ( const sf::Vector2f& newPos, const float newPosRight );
 
         void
-        addParticles    ( GravityParticles* p, const size_t amountMultiplyer, const int fallIntensity, const sf::Vector2f& newPos, const float newPosRight );
+        addParticles    ( Gravity_Particles* p, const size_t amountMultiplyer, const int fallIntensity, const sf::Vector2f& newPos, const float newPosRight );
 
         Entity&             m_entity;
         const Level&        m_level;
         Window&             m_window;
 
-        GravityParticles*   m_groundParticles  = nullptr;
-        GravityParticles*   m_landingParticles = nullptr; //For blood or other things, optional
+        Gravity_Particles*   m_groundParticles  = nullptr;
+        Gravity_Particles*   m_landingParticles = nullptr; //For blood or other things, optional
 };
 
 } //Namespace Component
