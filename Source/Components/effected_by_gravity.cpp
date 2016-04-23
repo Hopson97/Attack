@@ -89,10 +89,15 @@ Effected_By_Gravity :: handleParticles ( const sf::Vector2f& newPos, const float
 void
 Effected_By_Gravity :: addParticles ( Gravity_Particles* p, const size_t amountMultiplyer, const int fallIntensity, const sf::Vector2f& newPos, const float newPosRight )
 {
+    //Calculates how many particles to add, and checks if it is going to add too many
+    int n = abs ( fallIntensity * amountMultiplyer );
+    int maxParticlesToAdd = 15;
+    n = n > maxParticlesToAdd ? maxParticlesToAdd : n;
+
     //Add particles to the landing site, if one was added into this component
     if ( p )
     {
-        p->addParticles( abs ( fallIntensity * amountMultiplyer ),      //Particles added is proportinal to the fall intensity
+        p->addParticles( n,      //Particles added is proportinal to the fall intensity
                         { ( newPos.x + newPosRight ) / 2                //X position, between the 2 bottom edge vertex of entity,
                         ,   newPos.y - m_entity.getSpriteSize().y / 5}, //Y position -size... so particles don't insta stuck in the ground
                         {0, (float)fallIntensity}                      //Direction

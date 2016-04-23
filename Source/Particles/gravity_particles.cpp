@@ -22,7 +22,6 @@ Gravity_Particles :: addParticles ( const int count, const sf::Vector2f& locatio
 void
 Gravity_Particles :: update ( const float dt )
 {
-
     for ( size_t i = 0 ; i < m_particles.size() ; i++ )
     {
         //Get the vertex and particle at i index for shorthand
