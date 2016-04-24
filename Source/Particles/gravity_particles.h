@@ -68,7 +68,7 @@ class Gravity_Particles  :   public sf::Drawable, public sf::Transformable
             const Level*    m_level;
             sf::Vector2f    m_velocity;
         };
-        sf::VertexArray         m_vertices;
+        std::vector<sf::Vertex> m_vertices;
         sf::Color               m_colour;
         std::vector<Particle>   m_particles;
 

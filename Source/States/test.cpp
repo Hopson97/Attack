@@ -24,7 +24,7 @@ Test :: Test  ( Game* game )
     s.setVolume( 10 );
 }
 
-float delay = 0.00f;
+float delay = 0.3f;
 sf::Clock bulletDelay;
 
 void
@@ -52,21 +52,21 @@ Test :: input ( const double dt )
 void
 Test :: update ( const double dt )
 {
-    for ( size_t i = 0 ; i < m_bullets.size() ; i++ )
-    {
-        m_bullets.at( i )->update ( dt );
-        if ( !m_bullets.at( i )->isAlive() )
-        {
-            m_bullets.erase( m_bullets.begin() + i );
-        }
-    }
-
     for ( size_t i = 0 ; i < m_enemies.size() ; i++ )
     {
         m_enemies.at( i )->update ( dt );
         if ( !m_enemies.at( i )->isAlive() )
         {
             m_enemies.erase( m_enemies.begin() + i );
+        }
+    }
+
+    for ( size_t i = 0 ; i < m_bullets.size() ; i++ )
+    {
+        m_bullets.at( i )->update ( dt );
+        if ( !m_bullets.at( i )->isAlive() )
+        {
+            m_bullets.erase( m_bullets.begin() + i );
         }
     }
 
@@ -79,7 +79,7 @@ Test :: update ( const double dt )
         m_dirtParticles .update( dt );
     }
 
-    if ( m_enemyAdder.getElapsedTime().asSeconds() > 0.0f )
+    if ( m_enemyAdder.getElapsedTime().asSeconds() > 0.8f )
     {
         m_enemies.emplace_back( std::make_unique<Test_Enemy>(sf::Vector2f(m_player.getSpritePosition().x + random::num( -50, 50), m_player.getSpritePosition().y - 600),
                                 *m_game,

@@ -76,6 +76,9 @@ class Entity
         bool
         intersects              ( const Entity& other ) const;
 
+        void
+        setAlive                ( const bool alive );
+
     protected:
         void
         updateTilePosition      ();
@@ -97,9 +100,6 @@ class Entity
 
         void
         checkOutOfBounds        ();
-
-        void
-        setAlive                ( const bool alive );
 
     private:
         void

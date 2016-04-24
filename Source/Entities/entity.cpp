@@ -14,6 +14,8 @@ Entity :: Entity( const sf::Vector2f& size, const sf::Vector2f& position, const 
 void
 Entity :: update ( const float dt )
 {
+    if ( !m_isAlive ) return;
+
     updateTilePosition();
 
     for ( auto& component : m_components )

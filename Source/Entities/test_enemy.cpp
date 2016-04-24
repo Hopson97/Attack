@@ -21,7 +21,7 @@ Test_Enemy :: Test_Enemy( const sf::Vector2f& position, const Game& game, const 
     addComponent( std::make_unique<Component::Tile_Collidable>
                 ( *this, level, true, true ) );
 
-    centerSpriteOrigin();
+   centerSpriteOrigin();
 }
 
 void
@@ -45,7 +45,10 @@ Test_Enemy :: uniqueUpdate( const float dt )
         {
             std::cout << "Number dead: " << ++count << std::endl;
             setAlive( false );
-            m_blood.addParticles( 25, getSpritePosition(), { 0, 0} );
+            m_blood.addParticles( 30, getSpritePosition(), { 0, 0} );
+            bullet->setAlive ( false );
         }
     }
 }
+
+

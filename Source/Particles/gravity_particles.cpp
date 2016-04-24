@@ -14,7 +14,7 @@ Gravity_Particles :: addParticles ( const int count, const sf::Vector2f& locatio
 
     for ( int i = 0 ; i < count ; i ++ )
     {
-        m_vertices.append           ( sf::Vertex( location, m_colour) );
+        m_vertices.emplace_back     ( location, m_colour );
         m_particles.emplace_back    ( m_level, direction );
     }
 }
@@ -48,50 +48,23 @@ Gravity_Particles :: draw  ( sf::RenderTarget& window, sf::RenderStates states )
     states.texture = NULL;
 
     // draw the vertex array
-    window.draw(m_vertices, states );
+    window.draw(m_vertices.data(), m_vertices.size(), sf::PrimitiveType::Points );
 }
 
-size_t
-Gravity_Particles :: size () const
-{
-    return m_vertices.getVertexCount();
-}
 
 //Checks for the size of the particle arrays
-//It then copies the arrays back-front, and then resizes them
-//From the users perspective, they are removed from the FRONT
+//it then erases the first "maxSize - reduceTo" amount
 void
 Gravity_Particles :: checkForResize ()
 {
+
     static constexpr size_t maxSize = 45000;
-    static constexpr size_t reduceTo = 43000;
+    static constexpr size_t reduceTo = 44000;
 
-    if ( m_vertices.getVertexCount() > maxSize )
+    if ( m_vertices.size() > maxSize )
     {
-        sf::VertexArray newV;
-        std::vector<Particle> newP;
-
-        for ( int v = m_vertices.getVertexCount() ; v != 0 ; v-- )
-        {
-            newV.append( m_vertices[ v ] );
-        }
-
-        for ( int p = m_particles.size() ; p != 0 ; p-- )
-        {
-            try {
-                newP.push_back( m_particles.at( p ) );
-            }
-            catch ( std::out_of_range )
-            {
-
-            }
-        }
-
-        m_vertices = newV;
-        m_particles = newP;
-
-        m_vertices.resize   ( reduceTo );
-        m_particles.resize  ( reduceTo, m_particles.at( maxSize - 1 ) );
+        m_vertices.erase( m_vertices.begin(), m_vertices.begin() + (m_vertices.size() - reduceTo) );
+        m_particles.erase( m_particles.begin(), m_particles.begin() + (m_particles.size() - reduceTo) );
     }
 }
 

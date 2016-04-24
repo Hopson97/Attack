@@ -66,7 +66,7 @@ Tile_Collidable :: checkYTile ( const sf::Vector2f& newPos )
     if ( tileSolid ( m_level, newPos ) )
     {
         addParticles();
-                if ( m_isBounceOnCollide )
+        if ( m_isBounceOnCollide )
         {
             m_entity.setVelocity( -m_entity.getVelocity().x, -m_entity.getVelocity().y );
         }
