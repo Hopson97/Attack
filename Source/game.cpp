@@ -9,7 +9,6 @@ Game :: Game ()
     m_states.changeState( new State::Test ( this ) );
 }
 
-
 void
 Game :: runLoop ()
 {
@@ -34,6 +33,8 @@ Game :: runLoop ()
 
             fps_counter.update();
             fps_counter.draw( m_window.get() );
+
+
 
             m_window.update();
         }

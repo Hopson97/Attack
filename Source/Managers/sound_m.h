@@ -6,7 +6,8 @@
 
 enum class Sound_Name
 {
-    Bullet_Generic
+        Bullet_Generic
+    ,   Walk1
 };
 
 namespace Manager

@@ -24,8 +24,9 @@ Texture_M :: loadEntityTextures  ()
 {
     const std::string entityPath = "Res/Textures/Entities/";
 
-    loadTexture(Texture_Name::Player, entityPath + "player.png");
-    loadTexture(Texture_Name::Bullet, entityPath + "bullet.png");
+    loadTexture(Texture_Name::Player,       entityPath + "player.png");
+    loadTexture(Texture_Name::Bullet,       entityPath + "bullet.png");
+    loadTexture(Texture_Name::Eye_Enemy,    entityPath + "eye_enemy.png");
 }
 
 

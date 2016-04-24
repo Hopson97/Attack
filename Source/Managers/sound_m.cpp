@@ -19,7 +19,8 @@ Sound_M :: loadSounds ()
 {
     const std::string soundPath = "Res/Sounds/";
 
-    loadSound( Sound_Name::Bullet_Generic, soundPath + "gun_sound.ogg");
+    loadSound( Sound_Name::Bullet_Generic   , soundPath + "gun_sound.ogg" );
+    loadSound( Sound_Name::Walk1            , soundPath + "walk.ogg" );
 }
 
 void

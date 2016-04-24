@@ -67,6 +67,15 @@ class Entity
         void
         addComponent            ( ComponentPtr comp );
 
+        bool
+        isAlive                 () const;
+
+        const sf::FloatRect&
+        getRect                 () const;
+
+        bool
+        intersects              ( const Entity& other ) const;
+
     protected:
         void
         updateTilePosition      ();
@@ -88,6 +97,9 @@ class Entity
 
         void
         checkOutOfBounds        ();
+
+        void
+        setAlive                ( const bool alive );
 
     private:
         void
@@ -111,6 +123,7 @@ class Entity
 
         bool                m_isOnGround;
         bool                m_isMoving;
+        bool                m_isAlive       = true;
 
         std::vector<ComponentPtr>    m_components;
 };

@@ -1,6 +1,7 @@
 #include "entity.h"
 
 #include "tile_info.h"
+#include "math_funcs.h"
 
 Entity :: Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture, const Level& level  )
 :   m_sprite    ( size )
@@ -128,6 +129,19 @@ Entity :: isOnGround () const
     return m_isOnGround;
 }
 
+const sf::FloatRect&
+Entity :: getRect () const
+{
+    return m_sprite.getLocalBounds();
+}
+
+bool
+Entity :: intersects ( const Entity& other ) const
+{
+    return  (   Math::getDistance<float>(getSpritePosition(), other.getSpritePosition()) <= other.getSpriteSize().x ||
+                Math::getDistance<float>(getSpritePosition(), other.getSpritePosition()) <= other.getSpriteSize().y);
+}
+
 void
 Entity :: setIfOnGround ( const bool onGround )
 {
@@ -161,6 +175,19 @@ Entity :: setTextureRect ( const sf::IntRect& txrRect )
     m_sprite.setTextureRect( txrRect );
 }
 
+bool
+Entity :: isAlive () const
+{
+    return m_isAlive;
+}
+
+void
+Entity :: setAlive ( const bool alive )
+{
+    m_isAlive = alive;
+}
+
+
 void
 Entity :: centerSpriteOrigin ()
 {
@@ -181,6 +208,10 @@ Entity :: checkOutOfBounds ()
 
     updateTilePosition();
 }
+
+
+
+
 
 //Check if the entity is at the bottom of the map
 void

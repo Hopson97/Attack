@@ -5,6 +5,9 @@
 #include "tile_collidable.h"
 #include "effected_by_gravity.h"
 #include "friction.h"
+#include "points_towards_direction.h"
+
+sf::Sound s;
 
 Player :: Player(  const Level& level, const Game& game, Window& window, Gravity_Particles& bloodParticles )
 :   Entity  ( { Tile::TILE_SIZE / 2, Tile::TILE_SIZE * 1.5 }, { 1000, 350 }, game.getTexture ( Texture_Name::Player ), level  )
@@ -21,6 +24,11 @@ Player :: Player(  const Level& level, const Game& game, Window& window, Gravity
 
     addComponent( std::make_unique<Component::Friction>
                 ( *this, m_level ) );
+
+    s.setBuffer( game.getSound( Sound_Name::Walk1 ) );
+
+    s.setVolume( 10 );
+
 
     //Set up animations
     const float m_time = 0.03; //Time between animation frames
@@ -48,10 +56,18 @@ Player :: input ( const float dt )
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A ) )
     {
         changeVelocity ( -m_walkSpeed, 0 );
+        if ( isOnGround() )
+        {
+            s.play();
+        }
     }
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D ) )
     {
         changeVelocity ( m_walkSpeed, 0 );
+        if ( isOnGround() )
+        {
+            s.play();
+        }
     }
 }
 

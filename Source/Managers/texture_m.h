@@ -11,6 +11,8 @@ enum class Texture_Name
 
 ,   Bullet
 ,   Player
+
+,   Eye_Enemy
 };
 
 namespace Manager

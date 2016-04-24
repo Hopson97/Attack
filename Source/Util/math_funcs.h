@@ -46,6 +46,14 @@ namespace Math
         return  (T)sqrt( pow ( dx, 2 ) + pow ( dy, 2 ) );
     }
 
+    template<typename T, typename R>
+    void
+    getDyDx ( sf::Vector2<T> v1, sf::Vector2<R> v2, float& dx, float &dy )
+    {
+        dx = v1.x - v2.x;
+        dy = v1.y - v2.y;
+    }
+
 } //Namespace Math
 
 #endif // MATH_FUNCS_H_INCLUDED

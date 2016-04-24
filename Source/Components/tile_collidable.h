@@ -54,7 +54,7 @@ class Tile_Collidable : public Component_Base
         const bool      m_isCollideDown     =   false;
         const bool      m_isBounceOnCollide =   false;
 
-        Gravity_Particles*   m_dirtParticles;
+        Gravity_Particles*   m_dirtParticles    = nullptr;
 };
 
 } //Namespace Component

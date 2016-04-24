@@ -8,6 +8,8 @@
 
 #include "Particles/gravity_particles.h"
 
+#include "test_enemy.h"
+
 namespace State
 {
 
@@ -35,6 +37,9 @@ class Test : public State_Base
         Gravity_Particles      m_dirtParticles;
 
         std::vector<std::unique_ptr<Bullet>> m_bullets;
+
+        std::vector<std::unique_ptr<Test_Enemy>> m_enemies;
+        sf::Clock m_enemyAdder;
 
         bool                m_isParticlesOn = true;
 };

@@ -24,8 +24,10 @@ Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, W
     addComponent( std::make_unique<Component::Points_Towards_Direction>
                 ( *this ) );
 
-    float dx = getSpritePosition().x - targetLocation.x;
-    float dy = getSpritePosition().y - targetLocation.y;
+
+
+    float dy, dx;
+    Math::getDyDx( getSpritePosition(), targetLocation, dx, dy );
 
     float angle = Math::getRotInDeg( dx, dy );
     angle = Math::toRads( angle );
@@ -44,7 +46,7 @@ Bullet :: Bullet ( const Level& level, const Game& game, const Player& player, W
 void
 Bullet :: uniqueUpdate ( const float dt )
 {
-
+    setAlive( !isFallen() );
 }
 
 bool

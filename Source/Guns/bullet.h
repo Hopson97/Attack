@@ -14,14 +14,16 @@ class Bullet    :   public Entity
     public:
         Bullet      ( const Level& level, const Game& game, const Player& player, Window& window, const sf::Vector2f& targetLocation, Gravity_Particles& particles );
 
-        bool
-        isFallen    () const;
-
     private:
         void
         uniqueUpdate ( const float dt ) override;
 
-        const int m_speed = 2000;
+        bool
+        isFallen    () const;
+
+    private:
+
+        const int m_speed = 2150;
 
         bool        m_isFallen = false;
         sf::Clock   m_eraseClock; //Clock to determine when the bullet should be deleted
