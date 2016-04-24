@@ -13,7 +13,7 @@ namespace State
 class State_Base
 {
     public:
-        State_Base  ( Game* game);
+        State_Base  ( Game& game);
 
         virtual
         ~State_Base ();
@@ -28,7 +28,7 @@ class State_Base
         draw        ( const double dt ) = 0;
 
     protected:
-        Game* m_game;
+        Game& m_game;
 };
 
 } //Namespace state

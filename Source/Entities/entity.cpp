@@ -196,6 +196,14 @@ Entity :: centerSpriteOrigin ()
     sf::FloatRect r = m_sprite.getLocalBounds();
 
     m_sprite.setOrigin( r.width / 2, r.height / 2 );
+
+    m_isCenterOrigin = true;
+}
+
+bool
+Entity :: isCenteredOrigin () const
+{
+    return m_isCenterOrigin;
 }
 
 void
@@ -210,10 +218,6 @@ Entity :: checkOutOfBounds ()
 
     updateTilePosition();
 }
-
-
-
-
 
 //Check if the entity is at the bottom of the map
 void

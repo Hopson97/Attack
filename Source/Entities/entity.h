@@ -79,6 +79,9 @@ class Entity
         void
         setAlive                ( const bool alive );
 
+        bool
+        isCenteredOrigin        () const;
+
     protected:
         void
         updateTilePosition      ();
@@ -123,7 +126,8 @@ class Entity
 
         bool                m_isOnGround;
         bool                m_isMoving;
-        bool                m_isAlive       = true;
+        bool                m_isAlive           =   true;
+        bool                m_isCenterOrigin    =   false;
 
         std::vector<ComponentPtr>    m_components;
 };

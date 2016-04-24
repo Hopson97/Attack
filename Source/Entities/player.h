@@ -16,7 +16,7 @@ class Player : public Entity
         Player          ( const Level& level, const Game& game, Window& window, Gravity_Particles& bloodParticles );
 
         void
-        input           ( const float dt );
+        input           ();
 
     private:
         void

@@ -36,6 +36,10 @@ Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level, Gravity_
 void
 Tile_Collidable :: update ( const float dt )
 {
+    if ( !m_level.getTileAt( m_entity.getTilePosition())->m_isSolid ) m_inTileTimer.restart();
+    if ( m_inTileTimer.getElapsedTime().asSeconds() > 0.01 ) m_entity.setAlive( false );
+
+
     checkLeftCollide    ( dt );
     checkRightCollide   ( dt);
     checkUpCollide      ( dt);

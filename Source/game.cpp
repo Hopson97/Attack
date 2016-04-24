@@ -6,7 +6,7 @@
 
 Game :: Game ()
 {
-    m_states.changeState( new State::Test ( this ) );
+    m_states.changeState( new State::Test ( *this ) );
 }
 
 void

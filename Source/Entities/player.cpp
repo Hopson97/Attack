@@ -47,7 +47,7 @@ Player :: Player(  const Level& level, const Game& game, Window& window, Gravity
 }
 
 void
-Player :: input ( const float dt )
+Player :: input ()
 {
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::W ) && isOnGround() )
     {

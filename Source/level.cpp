@@ -8,10 +8,10 @@
 
 typedef std::unique_ptr<Tile::Tile_Base>  TilePtr;
 
-Level :: Level( const Game* game )
+Level :: Level( const Game& game )
 {
-    m_models[ Model::Grass ].setUp( game->getTexture( Texture_Name::Grass ) );
-    m_models[ Model::Dirt  ].setUp( game->getTexture( Texture_Name::Dirt  ) );
+    m_models[ Model::Grass ].setUp( game.getTexture( Texture_Name::Grass ) );
+    m_models[ Model::Dirt  ].setUp( game.getTexture( Texture_Name::Dirt  ) );
 
     Map_Loader loader;
 

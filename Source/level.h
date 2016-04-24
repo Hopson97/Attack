@@ -21,7 +21,7 @@ class Level
     using TilePtr = std::unique_ptr<Tile::Tile_Base>;
 
     public:
-        Level ( const Game* game );
+        Level ( const Game& game );
 
         void
         update  ( const float dt );

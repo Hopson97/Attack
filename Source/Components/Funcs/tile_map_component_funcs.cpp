@@ -21,8 +21,17 @@ const sf::Vector2f
 getNextPosition ( const Entity& entity, const float dt )
 {
     sf::Vector2f newPos;    // The new tile map position of the player
-    newPos.x = (entity.getSpritePosition().x ) + entity.getVelocity().x * dt ;
-    newPos.y = (entity.getSpritePosition().y ) + entity.getVelocity().y * dt;
+
+    if ( !entity.isCenteredOrigin() )
+    {
+        newPos.x = (entity.getSpritePosition().x ) + entity.getVelocity().x * dt;
+        newPos.y = (entity.getSpritePosition().y ) + entity.getVelocity().y * dt;
+    }
+    else
+    {
+        newPos.x = (entity.getSpritePosition().x - ( entity.getSpriteSize().x / 2 ) ) + entity.getVelocity().x * dt;
+        newPos.y = (entity.getSpritePosition().y - ( entity.getSpriteSize().x / 2 ) ) + entity.getVelocity().y * dt;
+    }
 
     return newPos;
 }

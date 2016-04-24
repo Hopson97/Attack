@@ -9,7 +9,7 @@
 namespace State
 {
 
-State_Base :: State_Base ( Game* game)
+State_Base :: State_Base ( Game& game)
 :   m_game   ( game )
 { }
 
