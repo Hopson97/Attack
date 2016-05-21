@@ -20,7 +20,7 @@ World :: input ()
 void
 World :: update ( const float dt )
 {
-    iterateEntities( dt );
+    updateEntites( dt );
 
     m_player.update( dt );
 
@@ -58,7 +58,6 @@ void
 World :: addEye ()
 {
     m_enemies.emplace_back( std::make_unique<Test_Enemy>(
-                            sf::Vector2f(m_player.getSpritePosition().x + random::num( -50, 50), m_player.getSpritePosition().y - 600),
                             m_game,
                             m_level,
                             m_player,
@@ -73,35 +72,9 @@ World :: getPlayer () const
 }
 
 void
-World :: iterateEntities ( const float dt )
+World :: updateEntites ( const float dt )
 {
-    iterateBullets( dt );
-    iterateEnemies( dt );
-}
-
-void
-World :: iterateBullets  ( const float dt )
-{
-    for ( size_t i = 0 ; i < m_bullets.size() ; i++ )
-    {
-        m_bullets.at( i )->update ( dt );
-        if ( !m_bullets.at( i )->isAlive() )
-        {
-            m_bullets.erase( m_bullets.begin() + i );
-        }
-    }
-}
-
-void
-World :: iterateEnemies  ( const float dt )
-{
-    for ( size_t i = 0 ; i < m_enemies.size() ; i++ )
-    {
-        m_enemies.at( i )->update ( dt );
-        if ( !m_enemies.at( i )->isAlive() )
-        {
-            m_enemies.erase( m_enemies.begin() + i );
-        }
-    }
+    iterateEntitiess( m_bullets, dt );
+    iterateEntitiess( m_enemies, dt );
 }
 

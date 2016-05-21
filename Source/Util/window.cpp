@@ -8,7 +8,7 @@
 Window :: Window()
 {
     //General window stuff
-    m_window.create ( sf::VideoMode(winInfo::WIDTH, winInfo::HEIGHT),
+    m_window.create ( sf::VideoMode(Win_Info::WIDTH, Win_Info::HEIGHT),
                       "Window",
                       sf::Style::Default,
                       sf::ContextSettings(24) );

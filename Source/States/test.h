@@ -2,6 +2,7 @@
 #define TEST_H
 
 #include "world.h"
+#include "soundeffect.h"
 
 namespace State
 {
@@ -23,7 +24,8 @@ class Test : public State_Base
         draw  ( const double dt ) override;
 
     private:
-        World   m_world;
+        World           m_world;
+        SoundEffect     m_gunSound;
 
 
 };

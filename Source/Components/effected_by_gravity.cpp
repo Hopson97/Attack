@@ -7,23 +7,29 @@
 namespace Component
 {
 
+Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level)
+:   m_entity            ( entity )
+,   m_level             ( level  )
+{ }
+
+
     Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level, Window& window)
 :   m_entity            ( entity )
 ,   m_level             ( level  )
-,   m_window            ( window )
+,   m_window            ( &window )
 { }
 
 Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level, Window& window, Gravity_Particles& particles )
 :   m_entity            ( entity )
 ,   m_level             ( level  )
-,   m_window            ( window )
+,   m_window            ( &window )
 ,   m_groundParticles   ( &particles )
 { }
 
 Effected_By_Gravity :: Effected_By_Gravity ( Entity& entity, const Level& level, Window& window, Gravity_Particles& particles, Gravity_Particles& particles2)
 :   m_entity                ( entity )
 ,   m_level                 ( level  )
-,   m_window                ( window )
+,   m_window                ( &window )
 ,   m_groundParticles      ( &particles )
 ,   m_landingParticles     ( &particles2 )
 { }
@@ -83,7 +89,8 @@ Effected_By_Gravity :: handleParticles ( const sf::Vector2f& newPos, const float
     addParticles( m_landingParticles, 5, fallIntensity, newPos, newPosRight );
 
     //Shake the screen
-    m_window.turnOnShake( fallIntensity, 0.1 );
+    if ( m_window )
+        m_window->turnOnShake( fallIntensity, 0.1 );
 }
 
 void

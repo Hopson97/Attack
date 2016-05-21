@@ -8,16 +8,19 @@
 
 typedef std::unique_ptr<Tile::Tile_Base>  TilePtr;
 
+Tile::Tile_Model air;
+
 Level :: Level( const Game& game )
 {
-    m_models[ Model::Grass ].setUp( game.getTexture( Texture_Name::Grass ) );
-    m_models[ Model::Dirt  ].setUp( game.getTexture( Texture_Name::Dirt  ) );
+    m_models[ Model::Grass ].setUp( game.getTexture( Texture_Name::Grass ), true );
+    m_models[ Model::Dirt  ].setUp( game.getTexture( Texture_Name::Dirt  ), true );
+    m_models[ Model::Air   ].setUp( false );
 
     Map_Loader loader;
 
     loader.loadMap( this, "Res/Maps/test.helimap", m_models );
 
-    m_errorTile = std::make_unique<Tile::Air>( -1, -1 );
+    m_errorTile = std::make_unique<Tile::Air>( -1, -1, &air );
 }
 
 void
@@ -49,9 +52,9 @@ Level :: getScreenBounds(  int& xStart, int& yStart,
                            int& xEnd,   int& yEnd,
                            const sf::Vector2i& playerTilePos ) const
 {
-    constexpr static int tilesX = (winInfo::WIDTH / Tile::TILE_SIZE );
+    constexpr static int tilesX = (Win_Info::WIDTH / Tile::TILE_SIZE );
 
-    constexpr static int tilesY = (winInfo::WIDTH / Tile::TILE_SIZE );
+    constexpr static int tilesY = (Win_Info::WIDTH / Tile::TILE_SIZE );
 
     xStart = playerTilePos.x - tilesX;
     yStart = playerTilePos.y - tilesY;
@@ -77,19 +80,6 @@ Level :: getTileAt ( const sf::Vector2i& tilePosition ) const
 {
     if ( (unsigned)tilePosition.y * m_mapWidth + tilePosition.x > m_tiles.size() - 1 )
     {
-        /*
-        std::string xLoc = std::to_string( tilePosition.x );
-        std::string yLoc = std::to_string( tilePosition.y );
-
-        std::string coords = "tile map location (" + xLoc + "," + yLoc + ")";
-
-        std::string xLocMax = std::to_string( m_mapWidth  );
-        std::string yLocMax = std::to_string( m_mapHeight );
-
-        std::string coordsMax = "(" + xLocMax + "," + yLocMax + ")";
-
-        std::cout << "Tried to access the Tile at: " + coords + ", where the maximum size is " + coordsMax + "." << std::endl;
-        */
         return m_errorTile;
     }
     else

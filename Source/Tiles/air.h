@@ -9,7 +9,7 @@ namespace Tile
 class Air : public Tile_Base
 {
     public:
-        Air( const int xPos, const int yPos );
+        Air( const int xPos, const int yPos, Tile_Model* model );
 
     private:
 };

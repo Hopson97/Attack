@@ -68,7 +68,7 @@ Gravity_Particles :: Particle :: isOnSolidTile( const sf::Vertex& vertex )
     if ( tilePositionY < 0 ) tilePositionY = 0;
 
 
-    return m_level->getTileAt( tilePositionX, tilePositionY )->m_isSolid;
+    return m_level->getTileAt( tilePositionX, tilePositionY )->isSolid();
 }
 
 //Particle :: getVecloity

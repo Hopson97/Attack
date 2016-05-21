@@ -23,7 +23,7 @@ class Bullet    :   public Entity
 
     private:
 
-        const int m_speed = 2150;
+        constexpr static int m_speed = 1900;
 
         bool        m_isFallen = false;
         sf::Clock   m_eraseClock; //Clock to determine when the bullet should be deleted

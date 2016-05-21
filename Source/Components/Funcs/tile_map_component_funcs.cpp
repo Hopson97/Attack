@@ -13,7 +13,7 @@ tileSolid ( const Level& level, const sf::Vector2f& newPos )
 {
     return level.getTileAt( newPos.x / Tile::TILE_SIZE,
                             newPos.y / Tile::TILE_SIZE
-                          ) ->m_isSolid;
+                          ) ->isSolid();
 }
 
 //Predicts the next position of the entity

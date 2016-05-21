@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace winInfo
+namespace Win_Info
 {
     constexpr int HEIGHT = 700;
     constexpr int WIDTH  = 1280;

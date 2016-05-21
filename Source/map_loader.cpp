@@ -11,7 +11,7 @@
 
 void
 Map_Loader :: loadMap ( Level* level, const std::string& filePath,
-                        std::map<Model, Tile_Model>& models )
+                        std::map<Model, Tile::Tile_Model>& models )
 {
     currY = 0;
     currX = 0;
@@ -49,14 +49,14 @@ Map_Loader :: switchChar ( const char c )
     switch ( c )
     {
     case ' ':
-        m_level->m_tiles.emplace_back( std::make_unique<Tile::Air>( currX, currY ) );
+        m_level->m_tiles.emplace_back( std::make_unique<Tile::Air>      ( currX, currY , &m_models->at   ( Model::Air   ) ) );
         break;
 
     case 'g':
-        m_level->m_tiles.emplace_back( std::make_unique<Tile::Grass>( currX, currY, &m_models->at ( Model::Grass ) ) );
+        m_level->m_tiles.emplace_back( std::make_unique<Tile::Grass>    ( currX, currY, &m_models->at   ( Model::Grass  ) ) );
         break;
     case 'd':
-        m_level->m_tiles.emplace_back( std::make_unique<Tile::Dirt>( currX, currY, &m_models->at ( Model::Dirt ) ) );
+        m_level->m_tiles.emplace_back( std::make_unique<Tile::Dirt>     ( currX, currY, &m_models->at    ( Model::Dirt  ) ) );
         break;
     }
 }

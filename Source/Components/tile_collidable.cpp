@@ -36,9 +36,7 @@ Tile_Collidable :: Tile_Collidable( Entity& entity, const Level& level, Gravity_
 void
 Tile_Collidable :: update ( const float dt )
 {
-    if ( !m_level.getTileAt( m_entity.getTilePosition())->m_isSolid ) m_inTileTimer.restart();
-    if ( m_inTileTimer.getElapsedTime().asSeconds() > 0.01 ) m_entity.setAlive( false );
-
+   if ( m_level.getTileAt( m_entity.getTilePosition())->isSolid() ) m_entity.setAlive( false );
 
     checkLeftCollide    ( dt );
     checkRightCollide   ( dt);
@@ -46,6 +44,8 @@ Tile_Collidable :: update ( const float dt )
 
     if ( m_isCollideDown ) checkDownCollide( dt );
 }
+
+float slowDownMultiplier = 0.93;
 
 void
 Tile_Collidable :: checkXTile ( const sf::Vector2f& newPos )
@@ -55,7 +55,8 @@ Tile_Collidable :: checkXTile ( const sf::Vector2f& newPos )
         addParticles();
         if ( m_isBounceOnCollide )
         {
-            m_entity.setVelocity( -m_entity.getVelocity().x, -m_entity.getVelocity().y );
+            m_entity.setVelocity( -m_entity.getVelocity().x * slowDownMultiplier,
+                                  -m_entity.getVelocity().y * ( slowDownMultiplier / 2 ) );
         }
         else
         {
@@ -72,7 +73,8 @@ Tile_Collidable :: checkYTile ( const sf::Vector2f& newPos )
         addParticles();
         if ( m_isBounceOnCollide )
         {
-            m_entity.setVelocity( -m_entity.getVelocity().x, -m_entity.getVelocity().y );
+            m_entity.setVelocity( -m_entity.getVelocity().x * ( slowDownMultiplier / 2 ),
+                                  -m_entity.getVelocity().y * slowDownMultiplier );
         }
         else
         {

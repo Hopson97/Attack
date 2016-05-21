@@ -5,14 +5,13 @@
 #include "level.h"
 #include "player.h"
 #include "bullet.h"
-
 #include "Particles/gravity_particles.h"
-
 #include "test_enemy.h"
 
-typedef std::unique_ptr<Test_Enemy> EnemyPtr;
-typedef std::unique_ptr<Bullet>     BulletPtr;
-typedef Gravity_Particles           GravParts;
+typedef Gravity_Particles                       GravParts;
+typedef std::unique_ptr<Bullet>                 BulletPtr;
+typedef std::unique_ptr<Test_Enemy>             EnemyPtr;
+typedef std::vector<std::unique_ptr<Entity>>    EntityPtrVect;
 
 class World
 {
@@ -20,32 +19,42 @@ class World
         World( Game& game );
 
         void
-        input           ();
+        input               ();
 
         void
-        update          ( const float dt );
+        update              ( const float dt );
 
         void
-        draw            ( sf::RenderWindow& window );
+        draw                ( sf::RenderWindow& window );
 
         void
-        addBullet       ();
+        addBullet           ();
 
         void
-        addEye          ();
+        addEye              ();
 
         const Player&
-        getPlayer       () const;
+        getPlayer           () const;
 
     private:
         void
-        iterateEntities ( const float dt );
+        updateEntites       ( const float dt );
 
+        template <typename T>
         void
-        iterateBullets  ( const float dt );
+        iterateEntitiess    ( std::vector<std::unique_ptr<T>>& entities, const float dt )
+        {
+            static_assert ( std::is_base_of < Entity, T > :: value, "T is not derived from Base" );
 
-        void
-        iterateEnemies  ( const float dt );
+            for ( size_t i = 0 ; i < entities.size() ; i++ )
+            {
+                entities.at( i )->update ( dt );
+                if ( !entities.at( i )->isAlive() )
+                {
+                    entities.erase( entities.begin() + i );
+                }
+            }
+        }
 
     private:
         Game&   m_game;

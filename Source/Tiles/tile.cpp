@@ -38,6 +38,12 @@ Tile_Base :: getTileMapPosition  () const
     return m_tilePosition;
 }
 
+bool
+Tile_Base :: isSolid ()
+{
+    return m_model->m_data.isSolid;
+}
+
 
 
 }

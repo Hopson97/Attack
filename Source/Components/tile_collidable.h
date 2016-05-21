@@ -51,10 +51,10 @@ class Tile_Collidable : public Component_Base
         Entity&                 m_entity;
         const Level&            m_level;
 
+        Gravity_Particles*      m_dirtParticles    = nullptr;
+
         const bool              m_isCollideDown     =   false;
         const bool              m_isBounceOnCollide =   false;
-
-        Gravity_Particles*      m_dirtParticles    = nullptr;
 
         sf::Clock               m_inTileTimer;
 };

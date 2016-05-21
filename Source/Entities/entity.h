@@ -15,6 +15,7 @@ class Entity
 {
     public:
         Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture, const Level& level );
+        Entity( const sf::Vector2f& size, const sf::Texture& texture, const Level& level );
 
         void
         update                  ( const float dt );
@@ -70,9 +71,6 @@ class Entity
         bool
         isAlive                 () const;
 
-        const sf::FloatRect&
-        getRect                 () const;
-
         bool
         intersects              ( const Entity& other ) const;
 
@@ -103,6 +101,12 @@ class Entity
 
         void
         checkOutOfBounds        ();
+
+        void
+        spawnInRandomAirTile    ();
+
+        bool
+        inWindowBounds          (const sf::RenderWindow& window ) const;
 
     private:
         void

@@ -45,7 +45,7 @@ Texture_M :: loadTexture ( const Texture_Name name, const std::string& path )
         throw std::runtime_error ( "Texture at " + path + " does not exist.");
     }
 
-    m_textureMap[ name ].setSmooth( true );
+    //m_textureMap[ name ].setSmooth( true );
 }
 
 }

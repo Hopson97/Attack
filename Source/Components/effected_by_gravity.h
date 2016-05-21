@@ -14,6 +14,7 @@ namespace Component
 class Effected_By_Gravity : public Component_Base
 {
     public:
+        Effected_By_Gravity( Entity& entity, const Level& level);
         Effected_By_Gravity( Entity& entity, const Level& level, Window& window);
         Effected_By_Gravity( Entity& entity, const Level& level, Window& window, Gravity_Particles& particles );
         Effected_By_Gravity( Entity& entity, const Level& level, Window& window, Gravity_Particles& particles, Gravity_Particles& particles2 );
@@ -36,7 +37,7 @@ class Effected_By_Gravity : public Component_Base
 
         Entity&             m_entity;
         const Level&        m_level;
-        Window&             m_window;
+        Window*             m_window = nullptr;
 
         Gravity_Particles*   m_groundParticles  = nullptr;
         Gravity_Particles*   m_landingParticles = nullptr; //For blood or other things, optional

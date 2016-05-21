@@ -25,15 +25,12 @@ class Tile_Base
         const sf::Vector2i
         getTileMapPosition  () const;
 
-        /*** TEMPORY PUBLIC VARIABLES */
-        bool m_isSolid;
+        bool
+        isSolid();
 
     private:
-        Tile_Data       m_data;
         sf::Vector2i    m_tilePosition;
-
         Tile_Model*     m_model = nullptr;
-
 };
 
 }

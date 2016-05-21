@@ -2,26 +2,23 @@
 
 #include "colours.h"
 
+
 #include <iostream>
 
 namespace State
 {
-
-sf::Sound s;
+    float delay = 0.1f;
 
 Test :: Test  ( Game& game )
 :   State_Base  ( game )
 ,   m_world     ( game )
+,   m_gunSound  ( m_game.getSound( Sound_Name::Bullet_Generic ) )
 {
     //Set the games view that the cameras centre is just below the player
     m_game.getWindow().setViewOrigin(  m_world.getPlayer().getSpritePosition() );
     m_game.getWindow().setViewOffset( 0, -m_world.getPlayer().getSpriteSize().y );
-
-    s.setBuffer( m_game.getSound( Sound_Name::Bullet_Generic ) );
-    s.setVolume( 10 );
 }
 
-float delay = 0.3f;
 sf::Clock bulletDelay;
 
 void
@@ -33,7 +30,7 @@ Test :: input ( const double dt )
     {
         m_world.addBullet();
 
-        s.play();
+        m_gunSound.play();
         bulletDelay.restart();
     }
 
@@ -43,7 +40,7 @@ sf::Clock enemyClock;
 void
 Test :: update ( const double dt )
 {
-    if ( enemyClock.getElapsedTime().asSeconds() >= delay )
+    if ( enemyClock.getElapsedTime().asSeconds() >= delay * 3 )
     {
         m_world.addEye();
         enemyClock.restart();

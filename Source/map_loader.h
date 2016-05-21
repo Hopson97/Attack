@@ -16,7 +16,7 @@ class Map_Loader
 
         void
         loadMap     ( Level* level, const std::string& filePath,
-                      std::map<Model, Tile_Model>& models );
+                      std::map<Model, Tile::Tile_Model>& models );
 
     private:
         void
@@ -27,7 +27,7 @@ class Map_Loader
         int currY;
         int currX;
 
-        std::map<Model, Tile_Model>* m_models;
+        std::map<Model, Tile::Tile_Model>* m_models;
 
 };
 

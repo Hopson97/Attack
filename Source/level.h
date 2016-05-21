@@ -12,6 +12,7 @@ enum class Model
 {
     Grass
 ,   Dirt
+,   Air
 };
 
 class Level
@@ -53,7 +54,7 @@ class Level
     private:
         std::vector<TilePtr>        m_tiles;
 
-        std::map<Model, Tile_Model> m_models;
+        std::map<Model, Tile::Tile_Model> m_models;
 
         TilePtr                     m_errorTile; //If all else fails, the "get tile" methods returns an air tile if the entity somehow gets out of bounds :/
 

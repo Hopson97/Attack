@@ -13,7 +13,7 @@ typedef std::unique_ptr<Bullet> BulletPtr;
 class Test_Enemy    :   public Entity
 {
     public:
-        Test_Enemy( const sf::Vector2f& position, const Game& game, const Level& level, const Player& player,
+        Test_Enemy( const Game& game, const Level& level, const Player& player,
                     Gravity_Particles& blood, std::vector<BulletPtr>& bullets );
 
         void
@@ -25,6 +25,7 @@ class Test_Enemy    :   public Entity
         const Player&               m_player;
 
         float                       m_accleration = 2;
+        float                       m_maxVel      = 200;
 
         Gravity_Particles&          m_blood;
 

@@ -2,24 +2,32 @@
 
 #include "points_towards_direction.h"
 #include "tile_collidable.h"
+#include "effected_by_gravity.h"
 
 #include "math_funcs.h"
 #include <iostream>
 
 static int count = 0;
 
-Test_Enemy :: Test_Enemy( const sf::Vector2f& position, const Game& game, const Level& level, const Player& player,
+Test_Enemy :: Test_Enemy( const Game& game, const Level& level, const Player& player,
                          Gravity_Particles& blood, std::vector<BulletPtr>& bullets )
-:   Entity      ( { 40, 40 }, position, game.getTexture(Texture_Name::Eye_Enemy), level )
+:   Entity      ( { 20, 20 }, game.getTexture(Texture_Name::Eye_Enemy), level )
 ,   m_player    ( player )
 ,   m_blood     ( blood )
 ,   m_bullets   ( bullets )
 {
+    spawnInRandomAirTile();
+
     addComponent( std::make_unique<Component::Points_Towards_Direction>
                 ( *this ) );
 
     addComponent( std::make_unique<Component::Tile_Collidable>
                 ( *this, level, true, true ) );
+
+
+    //lol
+    //addComponent( std::make_unique<Component::Effected_By_Gravity>
+    //            ( *this, level ) );
 
    centerSpriteOrigin();
 }
@@ -49,6 +57,13 @@ Test_Enemy :: uniqueUpdate( const float dt )
             bullet->setAlive ( false );
         }
     }
+
+    //if ( getVelocity().x > m_maxVel ) setVelocity (  m_maxVel, getVelocity().y );
+    //if ( getVelocity().x < m_maxVel ) setVelocity ( -m_maxVel, getVelocity().y );
+
+    //if ( getVelocity().y > m_maxVel ) setVelocity ( getVelocity().x, m_maxVel );
+    //if ( getVelocity().y < m_maxVel ) setVelocity ( getVelocity().x, -m_maxVel );
+
 }
 
 

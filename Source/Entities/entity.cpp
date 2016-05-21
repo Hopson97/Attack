@@ -1,13 +1,23 @@
 #include "entity.h"
 
+#include <iostream>
+
 #include "tile_info.h"
 #include "math_funcs.h"
+#include "rand.h"
 
 Entity :: Entity( const sf::Vector2f& size, const sf::Vector2f& position, const sf::Texture& texture, const Level& level  )
 :   m_sprite    ( size )
 ,   m_level     ( level )
 {
     m_sprite.setPosition( position );
+    m_sprite.setTexture ( &texture );
+}
+
+Entity :: Entity( const sf::Vector2f& size, const sf::Texture& texture, const Level& level  )
+:   m_sprite    ( size )
+,   m_level     ( level )
+{
     m_sprite.setTexture ( &texture );
 }
 
@@ -39,7 +49,10 @@ Entity :: update ( const float dt )
 void
 Entity :: draw ( sf::RenderWindow& window )
 {
-    window.draw( m_sprite );
+    if ( m_isAlive && inWindowBounds( window ) )
+    {
+        window.draw( m_sprite );
+    }
 }
 
 void
@@ -131,17 +144,14 @@ Entity :: isOnGround () const
     return m_isOnGround;
 }
 
-const sf::FloatRect&
-Entity :: getRect () const
-{
-    return m_sprite.getLocalBounds();
-}
-
 bool
 Entity :: intersects ( const Entity& other ) const
 {
     return  (   Math::getDistance<float>(getSpritePosition(), other.getSpritePosition()) <= other.getSpriteSize().x ||
-                Math::getDistance<float>(getSpritePosition(), other.getSpritePosition()) <= other.getSpriteSize().y);
+                Math::getDistance<float>(getSpritePosition(), other.getSpritePosition()) <= other.getSpriteSize().y // ||
+               // Math::getDistance<float>(getSpritePosition(), other.getSpritePosition()) <= getSpriteSize().x ||
+               // Math::getDistance<float>(getSpritePosition(), other.getSpritePosition()) <= getSpriteSize().y
+             );
 }
 
 void
@@ -205,6 +215,50 @@ Entity :: isCenteredOrigin () const
 {
     return m_isCenterOrigin;
 }
+
+void
+Entity :: spawnInRandomAirTile    ()
+{
+    unsigned trials = random::num( 10, 20 );
+
+    for ( unsigned i = 0 ; i < trials ; i ++ )
+    {
+        int x = random::num(0, m_level.getWidth  () );
+        int y = random::num(0, m_level.getHeight () );
+
+        if ( !m_level.getTileAt( x, y )->isSolid() )
+        {
+           if ( m_level.getTileAt( x - 1, y        )->isSolid() ) continue;
+           if ( m_level.getTileAt( x + 1, y        )->isSolid() ) continue;
+           if ( m_level.getTileAt( x,     y + 1    )->isSolid() ) continue;
+           if ( m_level.getTileAt( x,     y - 1    )->isSolid() ) continue;
+
+           if ( m_level.getTileAt( x - 1, y - 1    )->isSolid() ) continue;
+           if ( m_level.getTileAt( x + 1, y + 1    )->isSolid() ) continue;
+           if ( m_level.getTileAt( x - 1, y + 1    )->isSolid() ) continue;
+           if ( m_level.getTileAt( x + 1, y - 1    )->isSolid() ) continue;
+
+            m_sprite.setPosition( x * Tile::TILE_SIZE, y * Tile::TILE_SIZE );
+            return;
+        }
+    }
+
+    setAlive( false );
+}
+
+bool
+Entity :: inWindowBounds (const sf::RenderWindow& window ) const
+{
+    sf::Vector2f winPos = window.getView().getCenter();
+
+    if      ( m_sprite.getPosition().x  < winPos.x - Win_Info::WIDTH  / 2 - m_sprite.getLocalBounds().width )       return false ;
+    else if ( m_sprite.getPosition().y  < winPos.y - Win_Info::HEIGHT / 2 - m_sprite.getLocalBounds().height )      return false  ;
+    else if ( m_sprite.getPosition().x  > winPos.x + Win_Info::WIDTH  / 2 ) return false ;
+    else if ( m_sprite.getPosition().y  > winPos.y + Win_Info::WIDTH  / 2 ) return false ;
+
+    return true;
+}
+
 
 void
 Entity :: checkOutOfBounds ()
